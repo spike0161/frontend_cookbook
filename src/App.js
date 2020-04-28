@@ -1,19 +1,19 @@
 import React from "react";
-import { Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route } from "react-router-dom";
 import RecipeContainer from "./components/RecipeContainer";
-import Login from './components/login'
+import Login from "./components/login";
 
 class App extends React.Component {
-
   // componentDidMount
 
   render() {
     return (
       <div>
-        <Switch>
-          <Route  exact path='/' component={Login}/>
-        </Switch>
-        </div>
+        <BrowserRouter>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/allrecipes" component={RecipeContainer} />
+        </BrowserRouter>
+      </div>
     );
   }
 }
