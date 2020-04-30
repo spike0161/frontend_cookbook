@@ -13,7 +13,9 @@ const RecipeList = props => {
 };
 
 const mapStateToProps = store => ({
-  recipes: store.recipes.filter(recipe => recipe.title.toLowerCase().includes(store.searchText.toLowerCase()))
+  recipes: store.recipes.filter(recipe =>
+    recipe.title.toLowerCase().includes(store.searchText.toLowerCase())
+  )
 });
 
 export default connect(mapStateToProps)(RecipeList);
