@@ -1,9 +1,9 @@
-const FETCHED_RECIPES = "FETCHED_RECIPES";
+
 
 const URL = "http://localhost:3000/recipes";
 
 function fetchedRecipes(recipe_array) {
-  return { type: FETCHED_RECIPES, payload: recipe_array };
+  return { type: "FETCHED_RECIPES", payload: recipe_array };
 }
 
 function fetchingRecipes() {
@@ -16,4 +16,8 @@ function fetchingRecipes() {
   };
 }
 
-export { fetchingRecipes, FETCHED_RECIPES };
+function onSearch(newSearch) {
+  return { type: "CHANGE_SEARCH_TEXT", payload: newSearch}
+}
+
+export { fetchingRecipes, fetchedRecipes, onSearch };
