@@ -3,16 +3,17 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
 class RecipeDetails extends React.Component {
+
   render() {
     console.log("RecipeDetails props:", this.props);
     return !this.props.recipe ? null : (
 
       <div>RecipeDetails
         <h3>{this.props.recipe.title}</h3>
-        <p>Dairy Free: {this.props.recipe.dairy_free}</p>
-        <p>Gluten Free: {this.props.recipe.gluten_free}</p>
-        <p>Vegan: {this.props.recipe.vegan}</p>
-        <p>Vegetarian: {this.props.recipe.vegetarian}</p>
+        <p>Dairy Free: {this.props.recipe.dairy_free ? 'Yes' : 'No' }</p>
+        <p>Gluten Free: {this.props.recipe.gluten_free ? 'Yes' : 'No' }</p>
+        <p>Vegan: {this.props.recipe.vegan ? 'Yes' : 'No' }</p>
+        <p>Vegetarian: {this.props.recipe.vegetarian ? 'Yes' : 'No' }</p>
 
 
 
