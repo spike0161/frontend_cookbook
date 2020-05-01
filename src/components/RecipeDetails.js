@@ -1,5 +1,6 @@
 import React from "react";
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 class RecipeDetails extends React.Component {
   render() {
@@ -18,4 +19,4 @@ const mapStateToProps = (store, ownProps) => ({
   recipe: store.recipes.find(recipe => recipe.id === parseInt(ownProps.match.params.id))
 })
 
-export default connect(mapStateToProps)(RecipeDetails)
+export default withRouter(connect(mapStateToProps)(RecipeDetails))
