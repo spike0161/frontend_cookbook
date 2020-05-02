@@ -20,7 +20,7 @@ class RecipeDetails extends React.Component {
     );
   }
 }
-// rating, healthscore
+
 
 const mapStateToProps = (store, ownProps) => ({
   recipe: store.recipes.find(
