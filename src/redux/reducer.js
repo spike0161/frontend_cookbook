@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux'
 
 
-
-
 const recipeReducer = (oldState=[], action) => {
   switch (action.type) {
     case "FETCHED_RECIPES":
@@ -21,6 +19,8 @@ const searchTextReducer =(oldState="", action) => {
 
   }
 }
+
+
 
 const rootReducer = combineReducers({
   recipes: recipeReducer,
