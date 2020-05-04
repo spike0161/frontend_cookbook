@@ -14,6 +14,17 @@ function fetchedIngredients(ingredient_array) {
   return { type: "FETCHED_INGREDIENTS", payload: ingredient_array }
 }
 
+function addIngredient(newIngredient) {
+  return {type: "ADD_INGREDIENT", payload: newIngredient}
+}
+
+function createIngredient() {
+  
+}
+
+
+
+
 function fetchingIngredients() {
   return dispatch => {
     fetch(INGREDIENTS)
@@ -36,4 +47,4 @@ function fetchingRecipes() {
 }
 
 
-export { fetchingRecipes, fetchedRecipes, onSearch, fetchingIngredients, fetchedIngredients };
+export { fetchingRecipes, fetchedRecipes, onSearch, fetchingIngredients, fetchedIngredients, addIngredient };
