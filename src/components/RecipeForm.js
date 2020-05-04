@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-
 class RecipeForm extends React.Component {
 
 state = {
@@ -15,28 +14,45 @@ state = {
   vegan: false
 };
 
+
+
+
+
+
+
 // post request here
   render() {
     console.log("Recipe form props:", this.props);
     return !this.props.ingredients ? null : (
       <div>
-        <p>Recipe Form</p>
+        <h2>Add a new Recipe!</h2>
+        <div className="added-ingredient-div">
+          <h4>Added Ingredients:</h4>
+        </div>
         <form>
           <select >
                 {this.props.ingredients.map(ing =>
                 <option value={ing.name}>{ing.name}</option>
                 )}
               </select>
+              <input
+                className="form-control form-control-sm"
+                type="text"
+                placeholder="amount"
+                style={{ width: 200 }}
+              />
+            <label>Amount: </label>
               <select>
-                {this.props.ingredients.map(ing =>
-                <option value={ing.unit}>{ing.unit}</option>
-                )}
+                <option value="cup" >cup</option>
+                <option value="g">g</option>
+                <option value="oz">oz</option>
+                <option value="each">each</option>
+                <option value="tsp">tsp</option>
+                <option value="Tbs">Tbs</option>
+                <option value="whole">whole</option>
               </select>
-              <select>
-                {this.props.ingredients.map(ing =>
-                <option value={ing.amount}>{ing.amount}</option>
-                )}
-              </select>
+              <button>Add Ingredient</button>
+
           <div className="form-group">
             <label>Recipe Title: </label>
             <input
@@ -124,5 +140,6 @@ state = {
 const mapStateToProps = (store) => ({
   ingredients: store.ingredients
 })
+
 
 export default withRouter(connect(mapStateToProps)(RecipeForm));
