@@ -16,6 +16,15 @@ const searchTextReducer =(oldState="", action) => {
     return action.payload
     default:
     return oldState
+  }
+}
+
+const ingredientReducer =(oldState=[], action) => {
+  switch (action.type) {
+    case 'FETCHED_INGREDIENTS':
+    return action.payload
+    default:
+    return oldState
 
   }
 }
@@ -24,7 +33,8 @@ const searchTextReducer =(oldState="", action) => {
 
 const rootReducer = combineReducers({
   recipes: recipeReducer,
-  searchText: searchTextReducer
+  searchText: searchTextReducer,
+  ingredients: ingredientReducer
 })
 
 export default rootReducer

@@ -5,12 +5,12 @@ import RecipeDetails from "./components/RecipeDetails";
 import RecipeForm from "./components/RecipeForm";
 import Login from "./components/login";
 import { connect } from "react-redux";
-import { fetchingRecipes } from "./redux/actionCreators";
+import { fetchingRecipes, fetchingIngredients } from "./redux/actionCreators";
 
 class App extends React.Component {
-
   componentDidMount() {
     this.props.fetchingRecipes();
+    this.props.fetchingIngredients();
   }
   render() {
     return (
@@ -20,7 +20,6 @@ class App extends React.Component {
           <Route exact path="/recipes" component={RecipeContainer} />
           <Route exact path="/recipes/:id" component={RecipeDetails} />
           <Route exact path="/addnewrecipe" component={RecipeForm} />
-
         </BrowserRouter>
       </div>
     );
@@ -30,8 +29,15 @@ class App extends React.Component {
 const mapDispatchToProps = dispatch => ({
   fetchingRecipes: () => {
     dispatch(fetchingRecipes());
+  },
+  fetchingIngredients: () => {
+    dispatch(fetchingIngredients());
   }
-  // fetchingIngredients: () => {}
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(App)
+);
