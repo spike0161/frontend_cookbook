@@ -57,6 +57,7 @@ class RecipeForm extends React.Component {
       </p>
         </div>
         <form>
+          // name value for on change handler name="name"
           <select
             value={this.state.name}
             onChange={e => this.nameHandler(e)}
