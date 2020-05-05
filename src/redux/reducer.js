@@ -39,13 +39,23 @@ const ingredientReducer =(oldState=[], action) => {
   }
 }
 
+const currentUserReducer =(oldState= null, action) => {
+  switch (action.type) {
+    case 'FETCHED_USER':
+    return action.payload
+    default:
+    return oldState
+
+  }
+}
 
 
 const rootReducer = combineReducers({
   recipes: recipeReducer,
   searchText: searchTextReducer,
   ingredients: ingredientReducer,
-  addIngredient: addIngredientReducer
+  addIngredient: addIngredientReducer,
+  user: currentUserReducer
 })
 
 export default rootReducer

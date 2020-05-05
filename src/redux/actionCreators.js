@@ -1,6 +1,7 @@
 
 const RECIPES = "http://localhost:3000/recipes";
 const INGREDIENTS = "http://localhost:3000/ingredients";
+const USERS = "http://localhost:3000/users";
 
 
 // ################################# Action Creators ###################################
@@ -20,7 +21,27 @@ function addIngredient(newIngredient) {
   return {type: "ADD_INGREDIENT", payload: newIngredient}
 }
 
+function login(user){
+  return {type: "FETCHED_USER", payload: user}
+}
+
 // ############################### Dispatch Functions #################################################
+
+  function signUp( { firstName, lastName, userName, password }) {
+    return dispatch => {
+  fetch("http://localhost:3000/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": 'application/json',
+      "Accept": 'application/json'
+    },
+    body: JSON.stringify({ firstName, lastName, userName, password })
+  }).then(res => res.json())
+    .then(user => {
+      dispatch(login(user))
+    })
+  }
+}
 
 
 function fetchingIngredients() {
@@ -44,4 +65,4 @@ function fetchingRecipes() {
 }
 
 
-export { fetchingRecipes, fetchedRecipes, onSearch, fetchingIngredients, fetchedIngredients, addIngredient };
+export { fetchingRecipes, fetchedRecipes, onSearch, fetchingIngredients, fetchedIngredients, addIngredient, login, signUp };

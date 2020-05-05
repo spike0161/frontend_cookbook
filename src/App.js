@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch => ({
   },
   fetchingIngredients: () => {
     dispatch(fetchingIngredients());
-  }
+  },
 });
 
 export default withRouter(
