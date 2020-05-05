@@ -2,6 +2,8 @@
 const RECIPES = "http://localhost:3000/recipes";
 const INGREDIENTS = "http://localhost:3000/ingredients";
 
+
+// ################################# Action Creators ###################################
 function fetchedRecipes(recipe_array) {
   return { type: "FETCHED_RECIPES", payload: recipe_array };
 }
@@ -18,11 +20,7 @@ function addIngredient(newIngredient) {
   return {type: "ADD_INGREDIENT", payload: newIngredient}
 }
 
-function createIngredient() {
-  
-}
-
-
+// ############################### Dispatch Functions #################################################
 
 
 function fetchingIngredients() {
@@ -34,7 +32,6 @@ function fetchingIngredients() {
     })
   }
 }
-
 
 function fetchingRecipes() {
   return dispatch => {
