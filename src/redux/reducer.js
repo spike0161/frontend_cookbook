@@ -39,13 +39,23 @@ const ingredientReducer =(oldState=[], action) => {
   }
 }
 
+const redirectReducer =(oldState= false, action) => {
+  switch (action.type) {
+    case "FETCHED_USER":
+    return true
+    case 'REDIRECT':
+    return false
+    default:
+    return oldState
+  }
+}
+
 const currentUserReducer =(oldState= null, action) => {
   switch (action.type) {
     case 'FETCHED_USER':
     return action.payload
     default:
     return oldState
-
   }
 }
 
@@ -55,7 +65,8 @@ const rootReducer = combineReducers({
   searchText: searchTextReducer,
   ingredients: ingredientReducer,
   addIngredient: addIngredientReducer,
-  user: currentUserReducer
+  user: currentUserReducer,
+  redirect: redirectReducer
 })
 
 export default rootReducer

@@ -1,4 +1,5 @@
 
+
 const RECIPES = "http://localhost:3000/recipes";
 const INGREDIENTS = "http://localhost:3000/ingredients";
 const USERS = "http://localhost:3000/users";
@@ -24,6 +25,12 @@ function addIngredient(newIngredient) {
 function login(user){
   return {type: "FETCHED_USER", payload: user}
 }
+
+function redirectUser(){
+  return{ type: 'REDIRECT'}
+}
+
+
 
 // ############################### Dispatch Functions #################################################
 
@@ -65,4 +72,4 @@ function fetchingRecipes() {
 }
 
 
-export { fetchingRecipes, fetchedRecipes, onSearch, fetchingIngredients, fetchedIngredients, addIngredient, login, signUp };
+export { fetchingRecipes, fetchedRecipes, onSearch, fetchingIngredients, fetchedIngredients, addIngredient, login, signUp, redirectUser };
