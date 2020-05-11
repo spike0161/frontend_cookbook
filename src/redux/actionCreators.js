@@ -46,8 +46,8 @@ function favorite(recipe, user) {
       body: JSON.stringify(favRecipe)
         })
         .then(res => res.json())
-        .then(data => {
-          console.log(data)
+        .then(recipe => {
+          dispatch(favoriteRecipe(recipe))
     });
   };
 }
