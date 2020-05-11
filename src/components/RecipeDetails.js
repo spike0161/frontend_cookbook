@@ -5,11 +5,11 @@ import { favorite } from '../redux/actionCreators'
 
 class RecipeDetails extends React.Component {
   render() {
-    console.log("Recipe details:",this.props.recipe)
+    console.log("Recipe details:",this.props.user.user)
     return !this.props.recipe ? null : (
       <div>
         <h3>{this.props.recipe.title}</h3>
-        <button onClick={this.props.fav}>Favorite Recipe</button>
+        <button onClick={()=> this.props.fav(this.props.recipe, this.props.user.user)}>Favorite Recipe</button>
         <div>
           <p>Dairy Free: {this.props.recipe.dairy_free ? "Yes" : "No"}</p>
           <p>Gluten Free: {this.props.recipe.gluten_free ? "Yes" : "No"}</p>
@@ -33,13 +33,14 @@ const mapStateToProps = (store, ownProps) => ({
   recipe: store.recipes.find(
     recipe => recipe.id === parseInt(ownProps.match.params.id)
   ),
+  user: store.user,
   ingredients: store.ingredients
 });
 
 const mapDispatchToProps = dispatch => {
-  return ({
-    fav: recipe => dispatch(favorite(recipe))
-  })
+  return {
+    fav: (recipe, user) => dispatch(favorite(recipe, user))
+  }
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipeDetails));
