@@ -27,12 +27,19 @@ function login(user){
 }
 
 function redirectUser(){
-  return{ type: 'REDIRECT'}
+  return { type: 'REDIRECT'}
+}
+
+function favoriteRecipe(recipe){
+  return { type: "FAVORITE", payload: recipe}
 }
 
 
-
 // ############################### Dispatch Functions #################################################
+
+function favorite(recipe){
+  debugger
+}
 
   function signUp( { firstName, lastName, userName, password }) {
     return dispatch => {
@@ -72,4 +79,4 @@ function fetchingRecipes() {
 }
 
 
-export { fetchingRecipes, fetchedRecipes, onSearch, fetchingIngredients, fetchedIngredients, addIngredient, login, signUp, redirectUser };
+export { fetchingRecipes, fetchedRecipes, onSearch, fetchingIngredients, fetchedIngredients, addIngredient, login, signUp, redirectUser, favorite };
