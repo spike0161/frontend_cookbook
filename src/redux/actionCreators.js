@@ -31,10 +31,28 @@ function favoriteRecipe(recipe) {
   return { type: "FAVORITE", payload: recipe };
 }
 
+
 // ############################### Dispatch Functions #################################################
 
+function logginIn({ username, password }) {
+  return dispatch => {
+  fetch('http://localhost:3000/users', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    },
+    body: JSON.stringify({ username, password })
+  })
+  .then(res => res.json())
+  .then(user => {
+    dispatch(login(user))
+  })
+}
+}
+
+
 function favorite(recipe, user) {
-  // debugger
   let favRecipe = { recipe_id: recipe.id, user_id: user.id}
   return dispatch => {
     fetch("http://localhost:3000/favoriterecipe", {
@@ -99,5 +117,6 @@ export {
   login,
   signUp,
   redirectUser,
-  favorite
+  favorite,
+  logginIn
 };

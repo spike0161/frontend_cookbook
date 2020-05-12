@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { connect } from 'react-redux'
+import { logginIn } from '../redux/actionCreators'
 
 class Login extends React.Component {
   state = {
@@ -7,7 +9,22 @@ class Login extends React.Component {
     password: ""
   };
 
+  inputHandler = e => {
+    let copyState = {...this.state}
+    copyState[e.target.name] = [e.target.value]
+    this.setState(copyState)
+  }
+
+  handleLoginSubmit = e => {
+    e.preventDefault()
+    debugger
+    this.props.onLogin(this.state)
+  }
+
   render() {
+    if(this.props.redirect){
+      return <Redirect to='/usersprofile' />
+    }
     return (
       <div>
         <div className="bg-img">
@@ -17,7 +34,7 @@ class Login extends React.Component {
                 <form
                   action="/action_page.php"
                   className="container"
-                  onSubmit={this.handleSignUpSubmit}
+                  onSubmit={this.handleLoginSubmit}
                 >
                   <label htmlFor="name">Username:</label>
                   <input
@@ -25,17 +42,17 @@ class Login extends React.Component {
                     className="form-control"
                     name="username"
                     placeholder="username..."
-                    value={this.state.name}
-                    onChange={this.handleChange}
+                    value={this.state.username}
+                    onChange={this.inputHandler}
                   />
-                  <label htmlFor="username">Password:</label>
+                <label htmlFor="password">Password:</label>
                   <input
                     type="password"
                     className="form-control"
                     name="password"
                     placeholder="password..."
-                    value={this.state.username}
-                    onChange={this.handleChange}
+                    value={this.state.password}
+                    onChange={this.inputHandler}
                   />
 
                   <button
@@ -59,4 +76,15 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  user: state.user,
+  redirect: state.redirect
+})
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogin: user => dispatch(logginIn(user))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
