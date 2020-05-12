@@ -36,7 +36,7 @@ function favoriteRecipe(recipe) {
 
 function logginIn({ username, password }) {
   return dispatch => {
-  fetch('http://localhost:3000/users', {
+  fetch('http://localhost:3000/login', {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
@@ -70,7 +70,7 @@ function favorite(recipe, user) {
   };
 }
 
-function signUp({ firstName, lastName, userName, password }) {
+function signUp({ firstname, lastname, username, password }) {
   return dispatch => {
     fetch("http://localhost:3000/users", {
       method: "POST",
@@ -78,7 +78,7 @@ function signUp({ firstName, lastName, userName, password }) {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify({ firstName, lastName, userName, password })
+      body: JSON.stringify({ firstname, lastname, username, password })
     })
       .then(res => res.json())
       .then(user => {

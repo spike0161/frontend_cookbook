@@ -11,13 +11,12 @@ class Login extends React.Component {
 
   inputHandler = e => {
     let copyState = {...this.state}
-    copyState[e.target.name] = [e.target.value]
+    copyState[e.target.name] = e.target.value
     this.setState(copyState)
   }
 
   handleLoginSubmit = e => {
     e.preventDefault()
-    debugger
     this.props.onLogin(this.state)
   }
 
@@ -60,7 +59,7 @@ class Login extends React.Component {
                     className="btn btn-primary btn-lg btn-block"
                     id="login-btn"
                   >
-                    SignUp
+                    Login
                   </button>
                   <label>
                     {" "}
