@@ -1,7 +1,21 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { addingRecipe } from '../redux/actionCreators'
+import { addingRecipe } from "../redux/actionCreators";
+
+// <select
+//   value={this.state.name}
+//   name={this.state.ingredients}
+//   onChange={this.recipeHandler}
+// >
+//   <option defaultValue="value">Select Ingredient</option>
+//
+//   {this.props.ingredients.map(ing => (
+//     <option key={ing.id} value={ing.name}>
+//       {ing.name}
+//     </option>
+//   ))}
+// </select>
 
 class RecipeForm extends React.Component {
   state = {
@@ -13,67 +27,52 @@ class RecipeForm extends React.Component {
     gluten: false,
     dairy: false,
     vegetarian: false,
-    vegan: false,
-    name: ""
+    vegan: false
   };
 
   recipeHandler = e => {
-    let copyState = {...this.state}
-    copyState[e.target.name] = e.target.value
-    this.setState(copyState)
+    let copyState = { ...this.state };
+    copyState[e.target.name] = e.target.value;
+    this.setState(copyState);
   };
 
   veganHandler = e => {
-    let toggle = this.state.name ? true : false
-    this.setState({vegan: !toggle})
-  }
+    let toggle = this.state.name ? true : false;
+    this.setState({ vegan: !toggle });
+  };
 
   vegetarianHandler = e => {
-    let toggle = this.state.vegetarian ? true : false
-    this.setState({vegetarian: !toggle})
-  }
+    let toggle = this.state.vegetarian ? true : false;
+    this.setState({ vegetarian: !toggle });
+  };
 
   glutenHandler = e => {
-    let toggle = this.state.gluten ? true : false
-    this.setState({gluten: !toggle})
-  }
+    let toggle = this.state.gluten ? true : false;
+    this.setState({ gluten: !toggle });
+  };
 
   dairyHandler = e => {
-    let toggle = this.state.dairy ? true : false
-    this.setState({dairy: !toggle})
-  }
+    let toggle = this.state.dairy ? true : false;
+    this.setState({ dairy: !toggle });
+  };
 
   onRecipeSubmit = e => {
     e.preventDefault()
-    this.props.addingRecipe(this.state)
-  }
+    this.props.onSubmit(this.state)
+  };
 
   render() {
     console.log("Recipe Form:", this.state);
     return !this.props.ingredients ? null : (
       <div>
-        <form onSubmit={this.props.addingRecipe}>
-        <h2>Add a new Recipe!</h2>
-        <div className="added-ingredient-div">
-          <h4>Added Ingredients:</h4>
-          {this.state.ingredients.map(ing => ing)}
-        </div>
-          <select
-            value={this.state.name}
-            name={this.state.ingredients}
-            onChange={this.recipeHandler}
-          >
-            <option defaultValue="value">Select Ingredient</option>
-
-            {this.props.ingredients.map(ing => (
-              <option key={ing.id} value={ing.name}>
-                {ing.name}
-              </option>
-            ))}
-          </select>
-
-          <div>
+        <form onSubmit={this.onRecipeSubmit}>
+          <h2>Add a new Recipe!</h2>
+          <div className="added-ingredient-div">
+            <h4>Added Ingredients:</h4>
+            {this.state.ingredients.map(ing => ing)}
           </div>
+
+          <div></div>
 
           <div className="form-group">
             <label>Recipe Title: </label>
@@ -163,7 +162,7 @@ class RecipeForm extends React.Component {
             </div>
           </div>
           <div>
-            <button type='submit'>Submit Recipe</button>
+            <button type="submit">Submit Recipe</button>
           </div>
         </form>
       </div>
@@ -171,14 +170,20 @@ class RecipeForm extends React.Component {
   }
 }
 
-const mapStateToProps = store => ({
-  ingredients: store.ingredients
+const mapStateToProps = state => ({
+  ingredients: state.ingredients,
+  recipes: state.recipes
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    addingRecipe: recipe => {dispatch(addingRecipe(recipe))}
-  }
-}
+    onSubmit: recipe => dispatch(addingRecipe(recipe))
+  };
+};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecipeForm));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(RecipeForm)
+);

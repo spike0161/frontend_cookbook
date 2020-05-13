@@ -49,7 +49,9 @@ function addingRecipe({ title, cookTime, instructions, ingredients, picture, glu
       body: JSON.stringify({ title, cookTime, instructions, ingredients, picture, gluten, dairy, vegan, vegetarian })
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(recipe => {
+      dispatch(addNewRecipe(recipe))
+    })
   }
 }
 
