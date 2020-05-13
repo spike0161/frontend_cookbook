@@ -5,11 +5,12 @@ const recipeReducer = (oldState=[], action) => {
   switch (action.type) {
     case "FETCHED_RECIPES":
       return action.payload
+      case "ADD_NEW_RECIPE"
+      return [...oldState, action.payload]
     default:
       return oldState
   }
 }
-
 
 const searchTextReducer =(oldState="", action) => {
   switch (action.type) {

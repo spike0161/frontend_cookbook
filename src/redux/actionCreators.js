@@ -31,8 +31,18 @@ function favoriteRecipe(recipe) {
   return { type: "FAVORITE", payload: recipe };
 }
 
+function addNewRecipe(recipe) {
+  return { type: 'ADD_NEW_RECIPE', payload: recipe }
+}
+
 
 // ############################### Dispatch Functions #################################################
+
+// function addingRecipe({ title, cookTime, instructions, ingredients, picture, gluten, dairy, vegan, vegetarian }) {
+//   return dispatch => {
+//
+//   }
+// }
 
 function logginIn({ username, password }) {
   return dispatch => {
@@ -118,5 +128,6 @@ export {
   signUp,
   redirectUser,
   favorite,
-  logginIn
+  logginIn,
+  addNewRecipe
 };
