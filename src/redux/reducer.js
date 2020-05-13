@@ -54,20 +54,12 @@ const currentUserReducer =(oldState= null, action) => {
   switch (action.type) {
     case 'FETCHED_USER':
     return action.payload
-    default:
-    return oldState
-  }
-}
-
-const favoriteRecipeReducer =(oldState= [], action) => {
-  switch (action.type) {
     case 'FAVORITE':
-    return [...oldState, action.payload]
+    return {...oldState, favorites: [...oldState.favorites, action.payload]}
     default:
     return oldState
   }
 }
-
 
 const rootReducer = combineReducers({
   recipes: recipeReducer,
@@ -76,7 +68,6 @@ const rootReducer = combineReducers({
   addIngredient: addIngredientReducer,
   user: currentUserReducer,
   redirect: redirectReducer,
-  favorites: favoriteRecipeReducer
 })
 
 export default rootReducer
