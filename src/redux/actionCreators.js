@@ -1,6 +1,5 @@
 const RECIPES = "http://localhost:3000/recipes";
 const INGREDIENTS = "http://localhost:3000/ingredients";
-const USERS = "http://localhost:3000/users";
 
 // ################################# Action Creators ###################################
 function fetchedRecipes(recipe_array) {
@@ -32,63 +31,99 @@ function favoriteRecipe(recipe) {
 }
 
 function addNewRecipe(recipe) {
-  return { type: 'ADD_NEW_RECIPE', payload: recipe }
+  return { type: "ADD_NEW_RECIPE", payload: recipe };
 }
 
+function deleteFavoriteRecipe(recipe) {
+  return { type: "DELETE_FAVORITE_RECIPE", payload: recipe };
+}
 
 // ############################### Dispatch Functions #################################################
 
-function addingRecipe({ title, cookTime, instructions, ingredients, picture, gluten, dairy, vegan, vegetarian }) {
+function removeFavRecipe(recipe, user) {
+  let favorited = { recipe_id: recipe.id, user_id: user.user.id };
   return dispatch => {
-    fetch('http://localhost:3000/recipes', {
+    fetch(`http://localhost:3000/favoriterecipe/${user.user.id}/${recipe.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(favorited)
+    });
+    return dispatch(deleteFavoriteRecipe(recipe));
+  };
+}
+
+function addingRecipe({
+  title,
+  cookTime,
+  instructions,
+  ingredients,
+  picture,
+  gluten,
+  dairy,
+  vegan,
+  vegetarian
+}) {
+  return dispatch => {
+    fetch("http://localhost:3000/recipes", {
       method: "POST",
       headers: {
-        "Content-Type": 'application/json',
-        Accept: 'application/json'
+        "Content-Type": "application/json",
+        Accept: "application/json"
       },
-      body: JSON.stringify({ title, cookTime, instructions, ingredients, picture, gluten, dairy, vegan, vegetarian })
+      body: JSON.stringify({
+        title,
+        cookTime,
+        instructions,
+        ingredients,
+        picture,
+        gluten,
+        dairy,
+        vegan,
+        vegetarian
+      })
     })
-    .then(res => res.json())
-    .then(recipe => {
-      debugger
-      dispatch(addNewRecipe(recipe))
-    })
-  }
+      .then(res => res.json())
+      .then(recipe => {
+        dispatch(addNewRecipe(recipe));
+      });
+  };
 }
 
 function logginIn({ username, password }) {
   return dispatch => {
-  fetch('http://localhost:3000/login', {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json',
-      Accept: 'application/json'
-    },
-    body: JSON.stringify({ username, password })
-  })
-  .then(res => res.json())
-  .then(user => {
-    dispatch(login(user))
-  })
+    fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({ username, password })
+    })
+      .then(res => res.json())
+      .then(user => {
+        dispatch(login(user));
+      });
+  };
 }
-}
-
 
 function favorite(recipe, user) {
-  let favRecipe = { recipe_id: recipe.id, user_id: user.id}
+  let favRecipe = { recipe_id: recipe.id, user_id: user.id };
   return dispatch => {
     fetch("http://localhost:3000/favoriterecipe", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        Accept: "application/json"
       },
       body: JSON.stringify(favRecipe)
-        })
-        .then(res => res.json())
-        .then(recipe => {
-          dispatch(favoriteRecipe(recipe))
-    });
+    })
+      .then(res => res.json())
+      .then(recipe => {
+        dispatch(favoriteRecipe(recipe));
+      });
   };
 }
 
@@ -98,7 +133,7 @@ function signUp({ firstname, lastname, username, password }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        Accept: "application/json"
       },
       body: JSON.stringify({ firstname, lastname, username, password })
     })
@@ -142,5 +177,7 @@ export {
   favorite,
   logginIn,
   addNewRecipe,
-  addingRecipe
+  addingRecipe,
+  removeFavRecipe,
+  deleteFavoriteRecipe
 };

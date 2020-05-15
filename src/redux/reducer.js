@@ -1,66 +1,74 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from "redux";
 
-
-const recipeReducer = (oldState=[], action) => {
+const recipeReducer = (oldState = [], action) => {
   switch (action.type) {
     case "FETCHED_RECIPES":
-      return action.payload
-      case "ADD_NEW_RECIPE":
-      return [...oldState, action.payload]
+      return action.payload;
+    case "ADD_NEW_RECIPE":
+      return [...oldState, action.payload];
     default:
-      return oldState
+      return oldState;
   }
-}
+};
 
-const searchTextReducer =(oldState="", action) => {
+const searchTextReducer = (oldState = "", action) => {
   switch (action.type) {
     case "CHANGE_SEARCH_TEXT":
-    return action.payload
+      return action.payload;
     default:
-    return oldState
+      return oldState;
   }
-}
+};
 
-const addIngredientReducer =(oldState=[], action) => {
+const addIngredientReducer = (oldState = [], action) => {
   switch (action.type) {
-  case 'ADD_INGREDIENT':
-  return [...oldState, action.payload]
-  default:
-  return oldState
-  }
-}
-
-const ingredientReducer =(oldState=[], action) => {
-  switch (action.type) {
-    case 'FETCHED_INGREDIENTS':
-    return action.payload
+    case "ADD_INGREDIENT":
+      return [...oldState, action.payload];
     default:
-    return oldState
-
+      return oldState;
   }
-}
+};
 
-const redirectReducer =(oldState= false, action) => {
+const ingredientReducer = (oldState = [], action) => {
+  switch (action.type) {
+    case "FETCHED_INGREDIENTS":
+      return action.payload;
+    default:
+      return oldState;
+  }
+};
+
+const redirectReducer = (oldState = false, action) => {
   switch (action.type) {
     case "FETCHED_USER":
-    return true
-    case 'REDIRECT':
-    return false
+      return true;
+    case "REDIRECT":
+      return false;
     default:
-    return oldState
+      return oldState;
   }
-}
+};
 
-const currentUserReducer =(oldState= null, action) => {
+const currentUserReducer = (oldState = null, action) => {
+  // debugger
   switch (action.type) {
-    case 'FETCHED_USER':
-    return action.payload
-    case 'FAVORITE':
-    return {...oldState, favorites: [...oldState.favorites, action.payload]}
+    case "FETCHED_USER":
+      return action.payload;
+    case "FAVORITE":
+      return {
+
+        ...oldState,
+        favorites: [...oldState.favorites, action.payload]
+      };
+    case "DELETE_FAVORITE_RECIPE":
+      return {
+        ...oldState,
+        favorites: oldState.favorites.filter(rec => rec.id !== action.payload.id)
+      }
     default:
-    return oldState
+      return oldState;
   }
-}
+};
 
 const rootReducer = combineReducers({
   recipes: recipeReducer,
@@ -69,6 +77,6 @@ const rootReducer = combineReducers({
   addIngredient: addIngredientReducer,
   user: currentUserReducer,
   redirect: redirectReducer
-})
+});
 
-export default rootReducer
+export default rootReducer;

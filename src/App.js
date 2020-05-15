@@ -7,8 +7,8 @@ import Login from "./components/login";
 import SignUp from "./components/SignUp";
 import Navbar from "./components/Navbar";
 import UserProfilePage from "./components/UserProfilePage";
-import css from './index.css'
-import {Redirect} from 'react-router-dom'
+// import css from './index.css'
+// import {Redirect} from 'react-router-dom'
 import { connect } from "react-redux";
 import { fetchingRecipes, fetchingIngredients } from "./redux/actionCreators";
 
