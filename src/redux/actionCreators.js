@@ -50,6 +50,7 @@ function addingRecipe({ title, cookTime, instructions, ingredients, picture, glu
     })
     .then(res => res.json())
     .then(recipe => {
+      debugger
       dispatch(addNewRecipe(recipe))
     })
   }

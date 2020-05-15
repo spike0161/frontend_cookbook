@@ -68,7 +68,7 @@ const rootReducer = combineReducers({
   ingredients: ingredientReducer,
   addIngredient: addIngredientReducer,
   user: currentUserReducer,
-  redirect: redirectReducer,
+  redirect: redirectReducer
 })
 
 export default rootReducer

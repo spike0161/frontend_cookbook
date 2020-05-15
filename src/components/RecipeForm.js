@@ -57,12 +57,12 @@ class RecipeForm extends React.Component {
   };
 
   onRecipeSubmit = e => {
-    e.preventDefault()
-    this.props.onSubmit(this.state)
+    e.preventDefault();
+    this.props.onSubmit(this.state);
   };
 
   render() {
-    console.log("Recipe Form:", this.state);
+    console.log("Reciepform props:", this.state.user);
     return !this.props.ingredients ? null : (
       <div>
         <form onSubmit={this.onRecipeSubmit}>
@@ -170,9 +170,10 @@ class RecipeForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  ingredients: state.ingredients,
-  recipes: state.recipes
+const mapStateToProps = store => ({
+  ingredients: store.ingredients,
+  recipes: store.recipes,
+  user: store.user
 });
 
 const mapDispatchToProps = dispatch => {
