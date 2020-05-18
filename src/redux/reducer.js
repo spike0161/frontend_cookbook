@@ -11,6 +11,16 @@ const recipeReducer = (oldState = [], action) => {
   }
 };
 
+const reviewReducer = (oldState=[], action) => {
+  switch (action.type) {
+  case "ADD_REVIEW":
+  return [...oldState, action.payload]
+      default:
+      return oldState
+    }
+}
+
+
 const searchTextReducer = (oldState = "", action) => {
   switch (action.type) {
     case "CHANGE_SEARCH_TEXT":
@@ -50,21 +60,21 @@ const redirectReducer = (oldState = false, action) => {
 };
 
 const currentUserReducer = (oldState = null, action) => {
-  // debugger
   switch (action.type) {
     case "FETCHED_USER":
       return action.payload;
     case "FAVORITE":
       return {
-
         ...oldState,
         favorites: [...oldState.favorites, action.payload]
       };
     case "DELETE_FAVORITE_RECIPE":
       return {
         ...oldState,
-        favorites: oldState.favorites.filter(rec => rec.id !== action.payload.id)
-      }
+        favorites: oldState.favorites.filter(
+          rec => rec.id !== action.payload.id
+        )
+      };
     default:
       return oldState;
   }
@@ -76,7 +86,8 @@ const rootReducer = combineReducers({
   ingredients: ingredientReducer,
   addIngredient: addIngredientReducer,
   user: currentUserReducer,
-  redirect: redirectReducer
+  redirect: redirectReducer,
+  review: reviewReducer
 });
 
 export default rootReducer;

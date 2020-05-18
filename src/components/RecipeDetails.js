@@ -36,7 +36,7 @@ const mapStateToProps = (store, ownProps) => ({
     recipe => recipe.id === parseInt(ownProps.match.params.id)
   ),
   user: store.user,
-  ingredients: store.ingredients
+  ingredients: store.ingredients,
 });
 
 const mapDispatchToProps = dispatch => {

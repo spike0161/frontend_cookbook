@@ -38,7 +38,34 @@ function deleteFavoriteRecipe(recipe) {
   return { type: "DELETE_FAVORITE_RECIPE", payload: recipe };
 }
 
+function createdReview(review) {
+  return { type: "ADD_REVIEW", payload: review };
+}
+
 // ############################### Dispatch Functions #################################################
+
+function addCreatedReview({ title, reviewText, rating }, user, recipe) {
+  return dispatch => {
+    fetch("http://localhost:3000/reviews", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        title,
+        reviewText,
+        rating,
+        user_id: user.user.id,
+        recipe_id: recipe.id
+      })
+    })
+      .then(res => res.json())
+      .then(review => {
+        dispatch(createdReview(review));
+      });
+  };
+}
 
 function removeFavRecipe(recipe, user) {
   let favorited = { recipe_id: recipe.id, user_id: user.user.id };
@@ -179,5 +206,7 @@ export {
   addNewRecipe,
   addingRecipe,
   removeFavRecipe,
-  deleteFavoriteRecipe
+  deleteFavoriteRecipe,
+  createdReview,
+  addCreatedReview
 };
