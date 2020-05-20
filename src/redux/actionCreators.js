@@ -131,7 +131,11 @@ function logginIn({ username, password }) {
     })
       .then(res => res.json())
       .then(user => {
-        dispatch(login(user));
+        if (user.successful){
+        dispatch(login(user))
+      }else{
+        alert(user.message)
+      }
       });
   };
 }
