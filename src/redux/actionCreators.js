@@ -170,7 +170,7 @@ function signUp({ firstname, lastname, username, password }) {
     })
       .then(res => res.json())
       .then(user => {
-        dispatch(login(user));
+        dispatch(login(user))
       });
   };
 }

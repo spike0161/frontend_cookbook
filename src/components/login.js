@@ -63,7 +63,7 @@ class Login extends React.Component {
                   </button>
                   <label>
                     {" "}
-                    <Link to="/SignUp">Don't have an account?</Link>
+                    <Link to="/">Don't have an account?</Link>
                   </label>
                 </form>
               </div>
