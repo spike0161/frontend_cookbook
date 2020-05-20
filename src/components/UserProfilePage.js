@@ -4,10 +4,9 @@ import { withRouter, Link } from "react-router-dom";
 import { removeFavRecipe } from '../redux/actionCreators'
 
 const UserProfilePage = props => {
-  debugger
-  console.log("User Profile props:", props)
   return (
     <div>
+      Welcome {props.user.username}
       My Favorite Recipes:{" "}
       <div className="container-fluid">
         <div className="row">
