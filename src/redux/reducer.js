@@ -12,6 +12,7 @@ const recipeReducer = (oldState = [], action) => {
 };
 
 const reviewReducer = (oldState=[], action) => {
+  // console.log("Review oldstate:", oldState, "Review Action:", action)
   switch (action.type) {
   case "ADD_REVIEW":
   return [...oldState, action.payload]

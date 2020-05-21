@@ -44,7 +44,7 @@ function createdReview(review) {
 
 // ############################### Dispatch Functions #################################################
 
-function addCreatedReview({ title, reviewText, rating }, user, recipe) {
+function addCreatedReview({ reviewText, rating }, user, recipe) {
   return dispatch => {
     fetch("http://localhost:3000/reviews", {
       method: "POST",
@@ -53,7 +53,6 @@ function addCreatedReview({ title, reviewText, rating }, user, recipe) {
         Accept: "application/json"
       },
       body: JSON.stringify({
-        title,
         reviewText,
         rating,
         user_id: user.user.id,
