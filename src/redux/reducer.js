@@ -9,8 +9,7 @@ const recipeReducer = (oldState = [], action) => {
       case "ADD_REVIEW":
         return oldState.map(rec => {
           if(rec.id === action.payload.recipe_id){
-            // debugger
-            return {...rec, reviews: [...rec.reviews, action.payload]}
+            return {...rec, reviews: [action.payload, ...rec.reviews,]}
           } else {
             return rec
           }
@@ -19,16 +18,6 @@ const recipeReducer = (oldState = [], action) => {
       return oldState;
   }
 };
-
-// const reviewReducer = (oldState = [], action) => {
-//   // console.log("Review oldstate:", oldState, "Review Action:", action)
-//   switch (action.type) {
-//     case "ADD_REVIEW":
-//       return { ...oldState, reviews: [action.payload, ...oldState.reviews] };
-//     default:
-//       return oldState;
-//   }
-// };
 
 const searchTextReducer = (oldState = "", action) => {
   switch (action.type) {
@@ -96,7 +85,6 @@ const rootReducer = combineReducers({
   addIngredient: addIngredientReducer,
   user: currentUserReducer,
   redirect: redirectReducer,
-  // review: reviewReducer
 });
 
 export default rootReducer;

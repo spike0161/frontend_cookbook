@@ -34,7 +34,10 @@ class RecipeDetails extends React.Component {
         <h4>Instructions:</h4> <p>{this.props.recipe.instructions}</p>
         <ReviewForm />
         {this.props.recipe.reviews ?
-           this.props.recipe.reviews.map(rev => rev.review)
+           this.props.recipe.reviews.map(rev => (
+
+             <div>{rev.review}</div>
+           ))
           : null}
       </div>
     );
