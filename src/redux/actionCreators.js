@@ -46,7 +46,6 @@ function createdReview(recipe) {
 
 function addCreatedReview(newReview, recipe) {
   return dispatch => {
-    // debugger
     fetch(`http://localhost:3000/recipes/${recipe.id}`, {
       method: "POST",
       headers: {
@@ -57,7 +56,6 @@ function addCreatedReview(newReview, recipe) {
     })
       .then(res => res.json())
       .then(recipe => {
-        // debugger
           dispatch(createdReview(recipe));
       });
   };
