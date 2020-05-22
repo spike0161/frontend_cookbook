@@ -39,7 +39,7 @@ class ReviewForm extends Component {
 
   addCreatedReview = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state, this.props.user, this.props.recipe);
+    this.props.onSubmit(this.state, this.props.recipe);
   };
 
   render() {
@@ -77,13 +77,14 @@ class ReviewForm extends Component {
 
 const mapStateToProps = (state, ownProps) => ({
   user: state.user,
-  recipe: state.recipes.find(rec => rec.id === parseInt(ownProps.match.params.id))
+  recipe: state.recipes.find(rec => rec.id === parseInt(ownProps.match.params.id)),
 });
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSubmit: (review, user, recipe) => dispatch(addCreatedReview(review, user, recipe))
-  };
+    onSubmit: (newReview,recipe) => dispatch(addCreatedReview(newReview, recipe))
+
+  }
 };
 
 export default withRouter(connect(

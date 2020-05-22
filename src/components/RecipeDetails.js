@@ -51,8 +51,9 @@ const mapStateToProps = (store, ownProps) => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    fav: (recipe, user) => dispatch(favorite(recipe, user))
-  };
+    fav: (recipe, user) => dispatch(favorite(recipe, user)),
+
+  }
 };
 
 export default withRouter(
