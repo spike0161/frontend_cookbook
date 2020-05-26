@@ -9,9 +9,17 @@ const recipeReducer = (oldState = [], action) => {
       case "ADD_REVIEW":
         return oldState.map(rec => {
           if(rec.id === action.payload.recipe_id){
-            return {...rec, reviews: [action.payload, ...rec.reviews,]}
+            return {...rec, reviews: [action.payload, ...rec.reviews]}
           } else {
             return rec
+          }
+        })
+        case "DELETE_REVIEW":
+        return oldState.map(rec => {
+          if(rec.id !== action.payload.recipe_id){
+            return rec
+          } else {
+            return {...rec, reviews: rec.reviews.filter(rev => rev.id !== action.payload.id)}
           }
         })
     default:

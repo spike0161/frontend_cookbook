@@ -42,7 +42,25 @@ function createdReview(recipe) {
   return { type: "ADD_REVIEW", payload: recipe };
 }
 
+function deletingReview(review) {
+  return { type: 'DELETE_REVIEW', payload: review}
+}
+
 // ############################### Dispatch Functions #################################################
+
+function deleteReview(review) {
+  return dispatch => {
+    fetch(`http://localhost:3000/recipes/${review.recipe_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify(review)
+    });
+    return dispatch(deletingReview(review));
+  };
+}
 
 function addCreatedReview(review, recipe, user) {
   return dispatch => {
@@ -52,12 +70,15 @@ function addCreatedReview(review, recipe, user) {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
-      body: JSON.stringify({review: review.reviewText, rating: review.rating, user_id: user.id})
-
+      body: JSON.stringify({
+        review: review.reviewText,
+        rating: review.rating,
+        user_id: user.id
+      })
     })
       .then(res => res.json())
       .then(review => {
-          dispatch(createdReview(review));
+        dispatch(createdReview(review));
       });
   };
 }
@@ -126,11 +147,11 @@ function logginIn({ username, password }) {
     })
       .then(res => res.json())
       .then(user => {
-        if (user.successful){
-        dispatch(login(user))
-      }else{
-        alert(user.message)
-      }
+        if (user.successful) {
+          dispatch(login(user));
+        } else {
+          alert(user.message);
+        }
       });
   };
 }
@@ -165,7 +186,7 @@ function signUp({ firstname, lastname, username, password }) {
     })
       .then(res => res.json())
       .then(user => {
-        dispatch(login(user))
+        dispatch(login(user));
       });
   };
 }
@@ -207,5 +228,7 @@ export {
   removeFavRecipe,
   deleteFavoriteRecipe,
   createdReview,
-  addCreatedReview
+  addCreatedReview,
+  deleteReview,
+  deletingReview
 };
