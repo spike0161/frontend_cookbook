@@ -7,6 +7,7 @@ import { favorite, deleteReview } from "../redux/actionCreators";
 class RecipeDetails extends React.Component {
   render() {
     // console.log("Recipe details:", this.props);
+    // debugger;
     return !this.props.recipe ? null : (
       <div>
         <h3>{this.props.recipe.title}</h3>
@@ -33,12 +34,18 @@ class RecipeDetails extends React.Component {
         <p>Cook Time: {this.props.recipe.cook_time} mins</p>
         <h4>Instructions:</h4> <p>{this.props.recipe.instructions}</p>
         <ReviewForm />
-        {this.props.recipe.reviews ?
-           this.props.recipe.reviews.map(rev => (
+        {this.props.recipe.reviews
+          ? this.props.recipe.reviews.map(rev => (
+              <div>
+                {rev.review}
+                {rev.user_id === this.props.user.user.id ?
 
-             <div>{rev.review}
-               <button onClick={() => this.props.deleteReview(rev)}>Remove</button></div>
-           ))
+                  <button onClick={() => this.props.deleteReview(rev)}>
+                    Remove
+                  </button> : null
+                }
+              </div>
+            ))
           : null}
       </div>
     );
@@ -57,7 +64,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fav: (recipe, user) => dispatch(favorite(recipe, user)),
     deleteReview: review => dispatch(deleteReview(review))
-  }
+  };
 };
 
 export default withRouter(
