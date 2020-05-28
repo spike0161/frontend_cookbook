@@ -109,6 +109,7 @@ function addingRecipe({
   vegan,
   vegetarian
 }) {
+  // debugger
   return dispatch => {
     fetch("http://localhost:3000/recipes", {
       method: "POST",

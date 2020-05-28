@@ -37,13 +37,12 @@ class RecipeDetails extends React.Component {
         {this.props.recipe.reviews
           ? this.props.recipe.reviews.map(rev => (
               <div>
-                {rev.review}
-                {rev.user_id === this.props.user.user.id ?
-
+                {rev.review} : {rev.rating}
+                {rev.user_id !== this.props.user.user.id ? null : (
                   <button onClick={() => this.props.deleteReview(rev)}>
                     Remove
-                  </button> : null
-                }
+                  </button>
+                )}
               </div>
             ))
           : null}
