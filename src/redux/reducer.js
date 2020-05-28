@@ -6,22 +6,25 @@ const recipeReducer = (oldState = [], action) => {
       return action.payload;
     case "ADD_NEW_RECIPE":
       return [...oldState, action.payload];
-      case "ADD_REVIEW":
-        return oldState.map(rec => {
-          if(rec.id === action.payload.recipe_id){
-            return {...rec, reviews: [action.payload, ...rec.reviews]}
-          } else {
-            return rec
-          }
-        })
-        case "DELETE_REVIEW":
-        return oldState.map(rec => {
-          if(rec.id !== action.payload.recipe_id){
-            return rec
-          } else {
-            return {...rec, reviews: rec.reviews.filter(rev => rev.id !== action.payload.id)}
-          }
-        })
+    case "ADD_REVIEW":
+      return oldState.map(rec => {
+        if (rec.id === action.payload.recipe_id) {
+          return { ...rec, reviews: [action.payload, ...rec.reviews] };
+        } else {
+          return rec;
+        }
+      });
+    case "DELETE_REVIEW":
+      return oldState.map(rec => {
+        if (rec.id !== action.payload.recipe_id) {
+          return rec;
+        } else {
+          return {
+            ...rec,
+            reviews: rec.reviews.filter(rev => rev.id !== action.payload.id)
+          };
+        }
+      });
     default:
       return oldState;
   }
@@ -70,10 +73,10 @@ const currentUserReducer = (oldState = null, action) => {
     case "FETCHED_USER":
       return action.payload;
     case "FAVORITE":
-      return {
-        ...oldState,
-        favorites: [...oldState.favorites, action.payload]
-      };
+      return oldState.favorites.map(fav => fav.id).includes(action.payload.id)
+        ? oldState
+        : { ...oldState, favorites: [...oldState.favorites, action.payload] };
+
     case "DELETE_FAVORITE_RECIPE":
       return {
         ...oldState,
@@ -92,7 +95,7 @@ const rootReducer = combineReducers({
   ingredients: ingredientReducer,
   addIngredient: addIngredientReducer,
   user: currentUserReducer,
-  redirect: redirectReducer,
+  redirect: redirectReducer
 });
 
 export default rootReducer;
