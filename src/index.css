@@ -1,5 +1,33 @@
-.card {
+body {
+  background-image: url("images/spicetable.jpg");
+  background-size: cover;
+}
+
+.login-form {
+  margin-top: 15%;
+}
+
+.form-group {
+  color: #ccc;
+}
+
+.login-btn {
+  color: #ccc;
+ background-color: #87240b;
+ border: 2px;
+}
+
+.login-btn a:hover {
+  background-color: #111;
+}
+
+a {
+  color: #ccc;
+  text-align: right;
+}
+
+/* .card {
   width: 300px;
   height: 200px;
   margin-bottom: 10px;
-}
+} */

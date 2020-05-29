@@ -27,12 +27,12 @@ class Login extends React.Component {
     return (
       <div>
         <div className="bg-img">
-          <div className="container-fluid login-container">
+          <div className="container-fluid login-container login-form">
             <div className="row login-container">
               <div className="col-lg-4 offset-lg-4">
                 <form
                   action="/action_page.php"
-                  className="container"
+                  className="container form-group"
                   onSubmit={this.handleLoginSubmit}
                 >
                   <label htmlFor="name">Username:</label>
@@ -56,8 +56,7 @@ class Login extends React.Component {
 
                   <button
                     type="submit"
-                    className="btn btn-primary btn-lg btn-block"
-                    id="login-btn"
+                    className="btn btn-primary btn-lg btn-block login-btn"
                   >
                     Login
                   </button>

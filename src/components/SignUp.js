@@ -82,8 +82,8 @@ class SignUp extends React.Component {
                   </div>
                   <button
                     type="submit"
-                    className="btn btn-primary btn-lg btn-block"
-                    id="login-btn"
+                    className="btn btn-primary btn-lg btn-block login-btn"
+
                   >
                     SignUp
                   </button>
