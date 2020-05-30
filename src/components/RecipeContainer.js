@@ -8,7 +8,7 @@ class RecipeContainer extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="recipe-list">
         <SearchBar />
         <RecipeList />
       </div>

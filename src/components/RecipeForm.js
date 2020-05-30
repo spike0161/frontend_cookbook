@@ -65,11 +65,11 @@ class RecipeForm extends React.Component {
 
   onRecipeSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
+    this.props.onSubmit(this.state)
+    this.props.history.push('/recipes');
   };
 
   render() {
-    // console.log("Reciepform props:", this.state.user);
     return !this.props.ingredients ? null : (
       <div>
         <form onSubmit={this.onRecipeSubmit}>
@@ -203,8 +203,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default withRouter(
-  connect(
+  withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
   )(RecipeForm)
-);
+));

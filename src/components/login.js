@@ -25,7 +25,7 @@ class Login extends React.Component {
       return <Redirect to='/usersprofile' />
     }
     return (
-      <div>
+      <div className="background-signin">
         <div className="bg-img">
           <div className="container-fluid login-container login-form">
             <div className="row login-container">

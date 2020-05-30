@@ -2,15 +2,18 @@ import React from "react";
 import RecipeListItem from "./RecipeListItem";
 import { connect } from "react-redux";
 
-const RecipeList = props => {
-  return (
-    <div>
-      {props.recipes.map(recipe => (
-        <RecipeListItem recipe={recipe} key={recipe.id} />
-      ))}
-    </div>
-  );
-};
+class RecipeList extends React.Component {
+
+  render() {
+    return (
+      <div>
+        {this.props.recipes.map(recipe => (
+          <RecipeListItem recipe={recipe} key={recipe.id} />
+        ))}
+      </div>
+    );
+  }
+}
 
 const mapStateToProps = store => ({
   recipes: store.recipes.filter(recipe =>
