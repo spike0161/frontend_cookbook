@@ -71,7 +71,7 @@ class RecipeForm extends React.Component {
 
   render() {
     return !this.props.ingredients ? null : (
-      <div>
+      <div className="recipe-form">
         <form onSubmit={this.onRecipeSubmit}>
           <h2>Add a new Recipe!</h2>
           <div className="added-ingredient-div">
