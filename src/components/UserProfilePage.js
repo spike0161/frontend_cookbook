@@ -9,7 +9,7 @@ const UserProfilePage = props => {
       <div className="profile-div">
       <img id="avatar" src="https://st3.depositphotos.com/4111759/13425/v/450/depositphotos_134255626-stock-illustration-avatar-male-profile-gray-person.jpg" alt="avatar"/>
       <h3>{props.user.user.username}</h3>
-      <p id="bio">dwqpifnreougewnpofijewkfopewmdiomewcionewoigrbouwfqnewoufewhofn</p>
+      <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
       </div>
       My Favorite Recipes:{" "}
       <div className="container-fluid">

@@ -11,7 +11,7 @@ const recipeReducer = (oldState = [], action) => {
     case "ADD_REVIEW":
       return oldState.map(rec => {
         if (rec.id === action.payload.recipe_id) {
-          return { ...rec, reviews: [action.payload, ...rec.reviews] };
+          return { ...rec, reviews: [action.payload, ...rec.reviews] && swal("Created Review") };
         } else {
           return rec;
         }
@@ -23,7 +23,7 @@ const recipeReducer = (oldState = [], action) => {
         } else {
           return {
             ...rec,
-            reviews: rec.reviews.filter(rev => rev.id !== action.payload.id)
+            reviews: rec.reviews.filter(rev => rev.id !== action.payload.id) && swal("Deleted Review")
           };
         }
       });
@@ -44,7 +44,7 @@ const searchTextReducer = (oldState = "", action) => {
 const addIngredientReducer = (oldState = [], action) => {
   switch (action.type) {
     case "ADD_INGREDIENT":
-      return [...oldState, action.payload];
+      return [...oldState, action.payload] && swal("Added Ingredient");
     default:
       return oldState;
   }
