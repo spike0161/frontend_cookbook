@@ -1,4 +1,6 @@
 import { combineReducers } from "redux";
+import swal from 'sweetalert';
+
 
 const recipeReducer = (oldState = [], action) => {
   switch (action.type) {
@@ -74,7 +76,7 @@ const currentUserReducer = (oldState = null, action) => {
       return action.payload;
     case "FAVORITE":
       return oldState.favorites.map(fav => fav.id).includes(action.payload.id)
-        ? oldState
+        ? swal("Recipe is already added to your favorites")
         : { ...oldState, favorites: [...oldState.favorites, action.payload] };
 
     case "DELETE_FAVORITE_RECIPE":
@@ -82,7 +84,7 @@ const currentUserReducer = (oldState = null, action) => {
         ...oldState,
         favorites: oldState.favorites.filter(
           rec => rec.id !== action.payload.id
-        )
+        ) && swal("Removed from favorites")
       };
     default:
       return oldState;

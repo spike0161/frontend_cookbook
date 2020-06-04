@@ -5,8 +5,12 @@ import { removeFavRecipe } from '../redux/actionCreators'
 
 const UserProfilePage = props => {
   return (
-    <div>
-      Welcome {props.user.username}
+    <div className="user-profile-div">
+      <div className="profile-div">
+      <img id="avatar" src="https://st3.depositphotos.com/4111759/13425/v/450/depositphotos_134255626-stock-illustration-avatar-male-profile-gray-person.jpg" alt="avatar"/>
+      <h3>{props.user.user.username}</h3>
+      <p id="bio">dwqpifnreougewnpofijewkfopewmdiomewcionewoigrbouwfqnewoufewhofn</p>
+      </div>
       My Favorite Recipes:{" "}
       <div className="container-fluid">
         <div className="row">
@@ -20,10 +24,6 @@ const UserProfilePage = props => {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{recipe.title}</h5>
-                  <p className="card-text">
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
-                  </p>
                   <Link to={`/recipes/${recipe.id}`}>
                     <button className='btn btn-primary'>See Recipe</button>
                   </Link>
