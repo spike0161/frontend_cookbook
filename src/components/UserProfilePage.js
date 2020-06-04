@@ -15,7 +15,7 @@ const UserProfilePage = props => {
       <div className="container-fluid">
         <div className="row">
           {props.user.favorites.map(recipe => (
-            <div className="col-sm-2" key={recipe.id}>
+            <div className="col-lg-2" key={recipe.id}>
               <div className="card">
                 <img
                   className="card-img-top"
@@ -24,10 +24,14 @@ const UserProfilePage = props => {
                 />
                 <div className="card-body">
                   <h5 className="card-title">{recipe.title}</h5>
-                  <Link to={`/recipes/${recipe.id}`}>
-                    <button className='btn btn-primary'>See Recipe</button>
-                  </Link>
-                  <button className='btn btn-primary' onClick={e => props.deleteFavHandler(recipe, props.user)}>Remove Recipe</button>
+
+                      <div class="btn-group" role="group" aria-label="Basic example">
+                        <Link to={`/recipes/${recipe.id}`}><button type="button" class="btn btn-secondary">See Recipe</button>
+                      </Link>
+                        <button type="button delete-fav" class="btn btn-secondary" onClick={e => props.deleteFavHandler(recipe, props.user)}>x</button>
+                      </div>
+
+
                 </div>
               </div>
             </div>

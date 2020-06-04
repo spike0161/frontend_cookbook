@@ -86,6 +86,25 @@ li a {
   background-color: rgba(117, 111, 111, 0.3);
 }
 
+.card {
+  margin-bottom: 20px;
+  height: 400px;
+  width: 220px;
+  border-color: #87240b;
+  background-color: rgba(12,12,12,0.8)
+}
+
+.card-title {
+color: #CCC;
+}
+
+.delete-fav {
+  text-align: center;
+  background-color: #87240b;
+  margin-left: 90%;
+  border-radius: 50%;
+}
+
 /* .card {
   width: 300px;
   height: 200px;
