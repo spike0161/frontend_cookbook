@@ -43,10 +43,16 @@ function createdReview(recipe) {
 }
 
 function deletingReview(review) {
-  return { type: 'DELETE_REVIEW', payload: review}
+  return { type: "DELETE_REVIEW", payload: review };
 }
 
+// function isLoggedIn(user) {
+//   return { type: "RECIEVE_USER", payload: user };
+// }
+
 // ############################### Dispatch Functions #################################################
+
+
 
 function deleteReview(review) {
   return dispatch => {
@@ -149,6 +155,7 @@ function logginIn({ username, password }) {
       .then(res => res.json())
       .then(user => {
         if (user.successful) {
+          localStorage.setItem("jwt", user.token)
           dispatch(login(user));
         } else {
           alert(user.message);
@@ -232,4 +239,6 @@ export {
   addCreatedReview,
   deleteReview,
   deletingReview
+  // isLoggedIn,
+  // currentUserFetch
 };

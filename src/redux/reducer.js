@@ -62,7 +62,7 @@ const ingredientReducer = (oldState = [], action) => {
 const redirectReducer = (oldState = false, action) => {
   switch (action.type) {
     case "FETCHED_USER":
-      return true;
+      return true
     case "REDIRECT":
       return false;
     default:
@@ -78,7 +78,6 @@ const currentUserReducer = (oldState = null, action) => {
       return oldState.favorites.map(fav => fav.id).includes(action.payload.id)
         ? swal("Recipe is already added to your favorites")
         : { ...oldState, favorites: [...oldState.favorites, action.payload] };
-
     case "DELETE_FAVORITE_RECIPE":
       return {
         ...oldState,

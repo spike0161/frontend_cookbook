@@ -21,9 +21,10 @@ class Login extends React.Component {
   }
 
   render() {
-    if(this.props.redirect){
-      return <Redirect to='/usersprofile' />
-    }
+    // if(this.props.redirect){
+    //   return <Redirect to="/usersprofile" />
+    // }
+    console.log(this.props.user)
     return (
       <div className="background-signin">
         <div className="bg-img">
@@ -74,9 +75,9 @@ class Login extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user,
-  redirect: state.redirect
+const mapStateToProps = store => ({
+  user: store.user,
+  redirect: store.redirect
 })
 
 const mapDispatchToProps = dispatch => {

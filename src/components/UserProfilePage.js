@@ -1,9 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link, Redirect } from "react-router-dom";
 import { removeFavRecipe } from '../redux/actionCreators'
 
 const UserProfilePage = props => {
+  debugger
+  console.log("usersprofile", props.user);
   return (
     <div className="user-profile-div">
       <div className="profile-div">
@@ -41,11 +43,12 @@ const UserProfilePage = props => {
     </div>
   );
 };
-
+// debug user
 const mapStateToProps = store => ({
+    // debugger
   user: store.user,
   recipe: store.recipes
-});
+})
 
 const mapDispatchToProps = dispatch => {
   return {
