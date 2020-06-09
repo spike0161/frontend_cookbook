@@ -23,9 +23,6 @@ import {
 } from "./redux/actionCreators";
 
 class App extends React.Component {
-  state = {
-    loading: true
-  };
 
   componentDidMount() {
     this.props.fetchingRecipes();
@@ -41,7 +38,7 @@ class App extends React.Component {
       })
         .then(res => res.json())
         .then(user => {
-          console.log(user);
+          this.props.loginUser(user);
         });
     }
   }
@@ -53,11 +50,11 @@ class App extends React.Component {
 
   render() {
     // if you have a user redirect to user profile
-    console.log("In App", this.props.user);
     return (
       <div>
         <BrowserRouter>
           <Navbar />
+          {this.props.user ? <Redirect to='/usersprofile'/> : <Route exact path='/' component={SignUp} />}
           <Switch>
             <Route exact path="/" component={SignUp} />
             <Route exact path="/login" component={Login} />
