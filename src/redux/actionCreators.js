@@ -38,8 +38,8 @@ function deleteFavoriteRecipe(recipe) {
   return { type: "DELETE_FAVORITE_RECIPE", payload: recipe };
 }
 
-function createdReview(recipe) {
-  return { type: "ADD_REVIEW", payload: recipe };
+function createdReview(review) {
+  return { type: "ADD_REVIEW", payload: review };
 }
 
 function deletingReview(review) {
@@ -69,6 +69,7 @@ function deleteReview(review) {
 }
 
 function addCreatedReview(review, recipe, user) {
+
   return dispatch => {
     fetch(`http://localhost:3000/recipes/${recipe.id}`, {
       method: "POST",
