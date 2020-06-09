@@ -11,7 +11,7 @@ const recipeReducer = (oldState = [], action) => {
     case "ADD_REVIEW":
       return oldState.map(rec => {
         if (rec.id === action.payload.recipe_id) {
-          return { ...rec, reviews: [action.payload, ...rec.reviews] && swal("Created Review") };
+          return { ...rec, reviews: [action.payload, ...rec.reviews]};
         } else {
           return rec;
         }
@@ -23,7 +23,7 @@ const recipeReducer = (oldState = [], action) => {
         } else {
           return {
             ...rec,
-            reviews: rec.reviews.filter(rev => rev.id !== action.payload.id) && swal("Deleted Review")
+            reviews: rec.reviews.filter(rev => rev.id !== action.payload.id)
           };
         }
       });
@@ -44,7 +44,7 @@ const searchTextReducer = (oldState = "", action) => {
 const addIngredientReducer = (oldState = [], action) => {
   switch (action.type) {
     case "ADD_INGREDIENT":
-      return [...oldState, action.payload] && swal("Added Ingredient");
+      return [...oldState, action.payload] ;
     default:
       return oldState;
   }
@@ -76,14 +76,14 @@ const currentUserReducer = (oldState = null, action) => {
       return action.payload;
     case "FAVORITE":
       return oldState.favorites.map(fav => fav.id).includes(action.payload.id)
-        ? swal("Recipe is already added to your favorites")
+        ? oldState
         : { ...oldState, favorites: [...oldState.favorites, action.payload] };
     case "DELETE_FAVORITE_RECIPE":
       return {
         ...oldState,
         favorites: oldState.favorites.filter(
           rec => rec.id !== action.payload.id
-        ) && swal("Removed from favorites")
+        )
       };
     default:
       return oldState;

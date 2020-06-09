@@ -34,8 +34,9 @@ class RecipeDetails extends React.Component {
         <ReviewForm />
         {this.props.recipe.reviews
           ? this.props.recipe.reviews.map(rev => (
-              <div>
-                {rev.review} : {rev.rating}
+              <div id="review-div">
+                Rating : {rev.rating} / 5
+                <h4>{rev.review}</h4>
                 {rev.user_id !== this.props.user.user.id ? null : (
                   <button onClick={() => this.props.deleteReview(rev)}>
                     Remove

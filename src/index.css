@@ -105,6 +105,16 @@ color: #CCC;
   border-radius: 50%;
 }
 
+#review-div {
+  border: 2px solid #87240b;
+  width: 40%;
+  float: center;
+  padding: 5px;
+  margin-left: 25%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /* .card {
   width: 300px;
   height: 200px;
