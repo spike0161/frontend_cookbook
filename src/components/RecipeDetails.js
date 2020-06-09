@@ -6,6 +6,7 @@ import { favorite, deleteReview } from "../redux/actionCreators";
 
 class RecipeDetails extends React.Component {
   render() {
+    debugger
     return !this.props.recipe ? null : (
       <div className="recipe-details">
         <h3>{this.props.recipe.title}</h3>
@@ -37,6 +38,7 @@ class RecipeDetails extends React.Component {
               <div id="review-div">
                 Rating : {rev.rating} / 5
                 <h4>{rev.review}</h4>
+
                 {rev.user_id !== this.props.user.user.id ? null : (
                   <button onClick={() => this.props.deleteReview(rev)}>
                     Remove
