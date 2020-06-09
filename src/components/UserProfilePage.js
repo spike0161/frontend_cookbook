@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-<<<<<<< HEAD
 import { withRouter, Link, Redirect } from "react-router-dom";
 import { removeFavRecipe } from '../redux/actionCreators'
 
