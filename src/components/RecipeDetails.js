@@ -6,7 +6,6 @@ import { favorite, deleteReview } from "../redux/actionCreators";
 
 class RecipeDetails extends React.Component {
   render() {
-    debugger
     return !this.props.recipe ? null : (
       <div className="recipe-details">
         <h3>{this.props.recipe.title}</h3>
