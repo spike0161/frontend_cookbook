@@ -37,6 +37,7 @@ class RecipeDetails extends React.Component {
               <div id="review-div">
                 Rating : {rev.rating} / 5
                 <h4>{rev.review}</h4>
+                <p>By: {this.props.user.user.username}</p>
                 {rev.user_id !== this.props.user.user.id ? null : (
                   <button onClick={() => this.props.deleteReview(rev)}>
                     Remove

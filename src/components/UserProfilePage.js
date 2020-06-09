@@ -34,11 +34,9 @@ const UserProfilePage = props => {
                 <img className="card-img-top" src={recipe.picture} alt="Card" />
                 <div className="card-body">
                   <h5 className="card-title">{recipe.title}</h5>
-
                   <div
                     class="btn-group"
                     role="group"
-                    aria-label="Basic example"
                   >
                     <Link to={`/recipes/${recipe.id}`}>
                       <button type="button" class="btn btn-secondary">
@@ -64,7 +62,6 @@ const UserProfilePage = props => {
 };
 // debug user
 const mapStateToProps = store => ({
-    // debugger
   user: store.user,
   recipe: store.recipes
 })
