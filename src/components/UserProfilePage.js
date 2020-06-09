@@ -4,6 +4,7 @@ import { withRouter, Link } from "react-router-dom";
 import { removeFavRecipe } from '../redux/actionCreators'
 
 const UserProfilePage = props => {
+  console.log("In userProfile", props)
   return (
     <div className="user-profile-div">
       <div className="profile-div">
