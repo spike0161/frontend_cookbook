@@ -14,7 +14,7 @@ const UserProfilePage = props => {
           src="https://st3.depositphotos.com/4111759/13425/v/450/depositphotos_134255626-stock-illustration-avatar-male-profile-gray-person.jpg"
           alt="avatar"
         />
-        <h3>{props.user.username}</h3>
+      <h3>{props.user.user.username}</h3>
         <div>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -35,17 +35,17 @@ const UserProfilePage = props => {
                 <div className="card-body">
                   <h5 className="card-title">{recipe.title}</h5>
                   <div
-                    class="btn-group"
+                    className="btn-group"
                     role="group"
                   >
                     <Link to={`/recipes/${recipe.id}`}>
-                      <button type="button" class="btn btn-secondary">
+                      <button type="button" className="btn btn-secondary">
                         See Recipe
                       </button>
                     </Link>
                     <button
                       type="button delete-fav"
-                      class="btn btn-secondary"
+                      className="btn btn-secondary"
                       onClick={e => props.deleteFavHandler(recipe, props.user)}
                     >
                       x

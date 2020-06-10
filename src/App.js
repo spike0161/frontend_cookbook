@@ -24,6 +24,10 @@ import {
 
 class App extends React.Component {
 
+  // state = {
+  //   loading: true
+  // }
+
   componentDidMount() {
     this.props.fetchingRecipes();
     this.props.fetchingIngredients();
@@ -42,9 +46,7 @@ class App extends React.Component {
         });
     }
   }
-  //     this.props.loginUser(user)
-  //   })
-  // }
+
   // else {
   //   this.setState({ loading: false })
 
@@ -54,19 +56,13 @@ class App extends React.Component {
       <div>
         <BrowserRouter>
           <Navbar />
-          {this.props.user ? <Redirect to='/usersprofile'/> : <Route exact path='/' component={SignUp} />}
+          {this.props.user ? <Route exact path='/usersprofile' component={UserProfilePage}/> : <Route exact path='/' component={SignUp} />
+      }
           <Switch>
-            <Route exact path="/" component={SignUp} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/recipes" component={RecipeContainer} />
             <Route exact path="/recipes/:id" component={RecipeDetails} />
             <Route exact path="/addnewrecipe" component={RecipeForm} />
-            <Route exact path="/usersprofile" component={UserProfilePage} />
-            {!this.props.user ? (
-              <Redirect to="/login" />
-            ) : (
-              <Route exact path="/usersprofile" component={UserProfilePage} />
-            )}
           </Switch>
         </BrowserRouter>
       </div>
