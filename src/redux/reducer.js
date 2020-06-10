@@ -63,8 +63,8 @@ const redirectReducer = (oldState = false, action) => {
   switch (action.type) {
     case "FETCHED_USER":
       return true
-    // case "REDIRECT":
-    //   return false;
+    case "REDIRECT":
+      return false;
     default:
       return oldState;
   }

@@ -46,12 +46,15 @@ function deletingReview(review) {
   return { type: "DELETE_REVIEW", payload: review };
 }
 
-// function isLoggedIn(user) {
-//   return { type: "RECIEVE_USER", payload: user };
-// }
 
 // ############################### Dispatch Functions #################################################
 
+function logOutUser(){
+  return dispatch => {
+    localStorage.removeItem('jwt')
+    dispatch(login(null))
+  }
+}
 
 
 function deleteReview(review) {
@@ -239,7 +242,7 @@ export {
   createdReview,
   addCreatedReview,
   deleteReview,
-  deletingReview
-  // isLoggedIn,
+  deletingReview,
+  logOutUser
   // currentUserFetch
 };

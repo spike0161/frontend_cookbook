@@ -21,7 +21,7 @@ class Login extends React.Component {
   }
 
   render() {
-    if(this.props.redirect){
+    if(this.props.user){
       return <Redirect to="/usersprofile" />
     }
 
