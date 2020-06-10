@@ -24,7 +24,7 @@ class Login extends React.Component {
     if(this.props.redirect){
       return <Redirect to="/usersprofile" />
     }
-    console.log(this.props.user)
+
     return (
       <div className="background-signin">
         <div className="bg-img">

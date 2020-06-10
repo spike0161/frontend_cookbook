@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   BrowserRouter,
@@ -23,10 +22,9 @@ import {
 } from "./redux/actionCreators";
 
 class App extends React.Component {
-
   // state = {
   //   loading: true
-  // }
+  // };
 
   componentDidMount() {
     this.props.fetchingRecipes();
@@ -42,27 +40,31 @@ class App extends React.Component {
       })
         .then(res => res.json())
         .then(user => {
-          this.props.loginUser(user);
+          this.props.loginUser(user)
+          // && this.setState({ loading: false });
         });
     }
+    // else {
+      // this.setState({ loading: false });
+    // }
   }
-
-  // else {
-  //   this.setState({ loading: false })
 
   render() {
     // if you have a user redirect to user profile
     return (
       <div>
         <BrowserRouter>
-          <Navbar />
-          {this.props.user ? <Route exact path='/usersprofile' component={UserProfilePage}/> : <Route exact path='/' component={SignUp} />
-      }
+          <Navbar/>
           <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/recipes" component={RecipeContainer} />
-            <Route exact path="/recipes/:id" component={RecipeDetails} />
-            <Route exact path="/addnewrecipe" component={RecipeForm} />
+          <Route exact path='/recipes/:id' component={RecipeDetails} />
+          <Route exact path='/recipes' component={RecipeContainer} />
+          <Route exact path='/usersprofile' component={UserProfilePage} />
+          <Route exact path='/addnewrecipe' component={RecipeForm} />
+          <Route exact path='/login' component={Login} />
+         {this.props.user ?
+           <Redirect to='/usersprofile'/>
+         :
+         <Route exact path='/' component={SignUp} />}
           </Switch>
         </BrowserRouter>
       </div>

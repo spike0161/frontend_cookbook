@@ -1,5 +1,6 @@
 import React from 'react'
 import {withRouter, Link} from 'react-router-dom'
+
 const NavBar =(props)=>{
     return(
         <div className ='fixed-nav-bar'>
