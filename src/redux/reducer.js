@@ -76,8 +76,8 @@ const currentUserReducer = (oldState = null, action) => {
       return action.payload;
     case "FAVORITE":
       return oldState.favorites.map(fav => fav.id).includes(action.payload.id)
-        ? oldState
-        : { ...oldState, favorites: [...oldState.favorites, action.payload] };
+        ? swal("Already your favorite") && oldState
+        : swal("Added to favorites") && { ...oldState, favorites: [...oldState.favorites, action.payload] };
     case "DELETE_FAVORITE_RECIPE":
       return {
         ...oldState,
