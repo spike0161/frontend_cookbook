@@ -16,11 +16,13 @@ class RecipeDetails extends React.Component {
           <span>Vegetarian: {this.props.recipe.vegetarian ? "Yes" : "No"}</span>
         </div>
         <h4>Ingredients:</h4>
-        {this.props.recipe.ingredients.map(ing => (
+        {!this.props.recipe.ingredients ? null :
+        this.props.recipe.ingredients.map(ing => (
           <p>
             {ing.name} {ing.amount} {ing.unit}
           </p>
-        ))}
+        ))
+      }
         <img src={this.props.recipe.picture} alt="recipe" />
         <p>Cook Time: {this.props.recipe.cook_time} mins</p>
         <h4>Recipe Preparation:</h4> <p>{this.props.recipe.instructions}</p>
