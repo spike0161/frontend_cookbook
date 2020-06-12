@@ -58,11 +58,6 @@ class RecipeForm extends React.Component {
     this.setState({ dairy: !toggle });
   };
 
-  //
-  // removeIngredient = ing => {
-  //   // debugger
-  // };
-
   onRecipeSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state)

@@ -12,7 +12,7 @@ import RecipeForm from "./components/RecipeForm";
 import Login from "./components/login";
 import SignUp from "./components/SignUp";
 import Navbar from "./components/Navbar";
-import profileForm from './components/profileForm'
+import ProfileForm from './components/ProfileForm'
 import UserProfilePage from "./components/UserProfilePage";
 import css from "./index.css";
 import { connect } from "react-redux";
@@ -66,8 +66,8 @@ class App extends React.Component {
           <Route exact path='/recipes/:id' component={RecipeDetails} />
           <Route exact path='/addnewrecipe' component={RecipeForm} />
           <Route exact path='/usersprofile' component={UserProfilePage} />
-          <Route exact path='/usersprofile/edit' component={profileForm}/>
-
+          <Route exact path='/usersprofile/edit' component={
+                ProfileForm}/>
           </Switch>
         </BrowserRouter>
       </div>

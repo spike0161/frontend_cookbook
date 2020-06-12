@@ -4,7 +4,7 @@ import { withRouter, Link, Redirect } from "react-router-dom";
 import { removeFavRecipe } from '../redux/actionCreators'
 
 const UserProfilePage = props => {
-
+// render profile picture
   return (
     <div className="user-profile-div">
       <div className="profile-div">
@@ -13,8 +13,11 @@ const UserProfilePage = props => {
           src="https://st3.depositphotos.com/4111759/13425/v/450/depositphotos_134255626-stock-illustration-avatar-male-profile-gray-person.jpg"
           alt="avatar"
         />
+      <div>
       <Link to='/usersprofile/edit'>Edit Profile</Link>
+      </div>
       <h3>{props.user.user.username}</h3>
+      // 
         <div>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad

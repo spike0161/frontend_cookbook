@@ -46,16 +46,37 @@ function deletingReview(review) {
   return { type: "DELETE_REVIEW", payload: review };
 }
 
+function updateUser(user) {
+    return { type: "UPDATE_USER", payload: user}
+}
 
 // ############################### Dispatch Functions #################################################
 
-function logOutUser(){
+function addUserData(userData, user) {
   return dispatch => {
-    localStorage.removeItem('jwt')
-    dispatch(login(null))
-  }
+    fetch(`http://localhost:3000/users/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        bio: userData.bio,
+        picture: userData.picture
+      }),
+    }).then(res => res.json())
+      .then(user => {
+        dispatch(updateUser(user));
+      });
+  };
 }
 
+function logOutUser() {
+  return dispatch => {
+    localStorage.removeItem("jwt");
+    dispatch(login(null));
+  };
+}
 
 function deleteReview(review) {
   return dispatch => {
@@ -72,7 +93,6 @@ function deleteReview(review) {
 }
 
 function addCreatedReview(review, recipe, user) {
-
   return dispatch => {
     fetch(`http://localhost:3000/recipes/${recipe.id}`, {
       method: "POST",
@@ -159,7 +179,7 @@ function logginIn({ username, password }) {
       .then(res => res.json())
       .then(user => {
         if (user.successful) {
-          localStorage.setItem("jwt", user.token)
+          localStorage.setItem("jwt", user.token);
           dispatch(login(user));
         } else {
           alert(user.message);
@@ -243,5 +263,7 @@ export {
   addCreatedReview,
   deleteReview,
   deletingReview,
-  logOutUser
+  logOutUser,
+  addUserData,
+  updateUser
 };

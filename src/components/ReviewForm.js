@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { addCreatedReview } from "../redux/actionCreators";
+import { addCreatedReview } from "../redux/actionCreators"
 
 // <label>Review Title: </label>
 // <input
@@ -48,8 +47,6 @@ class ReviewForm extends Component {
       <div>
         <form onSubmit={this.addCreatedReview}>
           <div className="form-group">
-
-
             <select value={this.state.name} onChange={this.ratingHandler}>
               <option value="1">1</option>
               <option value="2">2</option>
