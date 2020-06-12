@@ -202,9 +202,9 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default withRouter(
+export default
   withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
   )(RecipeForm)
-));
+);
