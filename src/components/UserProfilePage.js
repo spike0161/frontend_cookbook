@@ -3,9 +3,13 @@ import { connect } from "react-redux";
 import { withRouter, Link, Redirect } from "react-router-dom";
 import { removeFavRecipe } from '../redux/actionCreators'
 
+// if(this.props.user){
+//   return <Redirect to="/usersprofile" />
+// }
+
 const UserProfilePage = props => {
-// render profile picture
-  return (
+console.log("User profile", props.user.user)
+  return !props.user.user ? <Redirect to="/login" /> : (
     <div className="user-profile-div">
       <div className="profile-div">
         <img
@@ -17,15 +21,8 @@ const UserProfilePage = props => {
       <Link to='/usersprofile/edit'>Edit Profile</Link>
       </div>
       <h3>{props.user.user.username}</h3>
-      // 
         <div>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          <p>Bio: {props.user.user.bio}</p>
         </div>
       </div>
       My Favorite Recipes:{" "}
@@ -42,13 +39,13 @@ const UserProfilePage = props => {
                     role="group"
                   >
                     <Link to={`/recipes/${recipe.id}`}>
-                      <button type="button" className="btn btn-secondary">
+                      <button type="button" className="btn btn-secondary see-recipe">
                         See Recipe
                       </button>
                     </Link>
                     <button
                       type="button delete-fav"
-                      className="btn btn-secondary"
+                      className="btn btn-secondary delete"
                       onClick={e => props.deleteFavHandler(recipe, props.user)}
                     >
                       x

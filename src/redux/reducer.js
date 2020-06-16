@@ -85,6 +85,8 @@ const currentUserReducer = (oldState = null, action) => {
           rec => rec.id !== action.payload.id
         )
       };
+      case "UPDATE_USER":
+      return action.payload
     default:
       return oldState;
   }

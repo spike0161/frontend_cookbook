@@ -66,7 +66,7 @@ function addUserData(userData, user) {
       }),
     }).then(res => res.json())
       .then(user => {
-        dispatch(updateUser(user));
+        dispatch(updateUser(user))
       });
   };
 }
@@ -139,7 +139,6 @@ function addingRecipe({
   vegan,
   vegetarian
 }) {
-  // debugger
   return dispatch => {
     fetch("http://localhost:3000/recipes", {
       method: "POST",
