@@ -24,7 +24,7 @@ class ProfileForm extends Component {
   userDataSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state, this.props.user.user);
-    this.props.history.push("/userprofile");
+    this.props.history.push("/usersprofile");
   };
 
   render() {

@@ -148,3 +148,17 @@ footer {
 #fav-btn {
   width: 200px
 }
+
+.added {
+  margin-top: 10px;
+}
+
+.delete {
+  background-color: #87240b;
+  margin-left: 90%;
+  width: 10%;
+  text-align: center;
+}
+.see-recipe {
+  background-color: #87240b;
+}
