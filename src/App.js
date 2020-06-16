@@ -11,6 +11,7 @@ import RecipeDetails from "./components/RecipeDetails";
 import RecipeForm from "./components/RecipeForm";
 import Login from "./components/login";
 import SignUp from "./components/SignUp";
+import About from "./components/About";
 import Navbar from "./components/Navbar";
 import ProfileForm from './components/ProfileForm'
 import UserProfilePage from "./components/UserProfilePage";
@@ -68,6 +69,8 @@ class App extends React.Component {
           <Route exact path='/usersprofile' component={UserProfilePage} />
           <Route exact path='/usersprofile/edit' component={
                 ProfileForm}/>
+              <Route exact path='/about' component={
+                      About}/>
           </Switch>
         </BrowserRouter>
       </div>

@@ -80,9 +80,8 @@ li a {
   margin-bottom: 100px;
 }
 
-.profile-div {
-  color: black;
-  background-color: rgba(117, 111, 111, 0.3);
+#submit {
+  width: 200px;
 }
 
 .card {
@@ -112,4 +111,40 @@ color: #CCC;
   margin-left: 25%;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.about {
+  margin-top: 7%;
+  color: #ccc;
+  text-align: center;
+}
+.about-created p{
+  font-size: 16px;
+  margin: 0%;
+}
+footer {
+  position: fixed;
+  bottom: 0%;
+  width: 100%;
+  border-top:  1px solid #ccc;
+}
+.about-created h6 {
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+.form-control {
+  margin-bottom: 1%;
+}
+
+.added-ingredient-div {
+  margin-top: 20px;
+}
+#dietery p{
+  margin-bottom: 1px;
+  font-size: 14px;
+}
+
+#fav-btn {
+  width: 200px
 }

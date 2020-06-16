@@ -177,7 +177,7 @@ class RecipeForm extends React.Component {
             </div>
           </div>
           <div>
-            <button type="submit">Submit Recipe</button>
+            <button type="submit" className="btn btn-primary btn-lg btn-block login-btn" id="submit">Submit Recipe</button>
           </div>
         </form>
       </div>
