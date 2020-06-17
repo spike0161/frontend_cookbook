@@ -53,6 +53,7 @@ function updateUser(user) {
 // ############################### Dispatch Functions #################################################
 
 function addUserData(userData, user) {
+  // debugger
   return dispatch => {
     fetch(`http://localhost:3000/users/${user.id}`, {
       method: "PATCH",
@@ -66,6 +67,7 @@ function addUserData(userData, user) {
       }),
     }).then(res => res.json())
       .then(user => {
+        console.log(user)
         dispatch(updateUser(user))
       });
   };

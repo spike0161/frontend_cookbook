@@ -1,5 +1,5 @@
 import React from 'react'
-import github from '../images/github.png'
+
 
 const About = props => {
     return(

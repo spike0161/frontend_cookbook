@@ -180,3 +180,30 @@ footer {
 .form-group {
   text-align: center;
 }
+
+.edit-profile {
+  margin-left: 40%;
+  color: #CCC;
+  margin-top: 10%;
+}
+
+#profile-bio {
+  color: #CCC !important;
+  background-color: rgba(12, 12, 12, 0.8) !important;
+  border-color: #87240b;
+}
+
+.edit-btn {
+width: 200px;
+color: #CCC;
+margin-top: 15px;
+background-color: #87240b;
+border: none;
+}
+
+#edit-bio {
+}
+
+.edit-profile h4 {
+  margin: 20px;
+}

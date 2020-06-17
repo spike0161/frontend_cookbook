@@ -8,13 +8,13 @@ class ProfileForm extends Component {
     super(props);
 
     this.state = {
-      picture: "",
+      picture: null,
       bio: ""
     };
   }
 
   addPicHandler = e => {
-    this.setState({ picture: e.target.value });
+    this.setState({ picture: e.target.files[0] });
   };
 
   addBioHandler = e => {
@@ -29,21 +29,21 @@ class ProfileForm extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.userDataSubmit}>
-          <h2>Add Picture!</h2>
+      <div className="edit-profile">
+        <form id="edit_bio" onSubmit={this.userDataSubmit}>
           <div className="added-ingredient-div">
             <h4>Add Picture:</h4>
           </div>
           <div>
-            <input type="file" onChange={this.addPicHandler} />
+              <input type="file" onChange={this.addPicHandler} />
             <h4>Add Bio:</h4>
             <textarea
+              id='profile-bio'
               placeholder="add bio here..."
               onChange={this.addBioHandler}
             ></textarea>
           </div>
-          <button>Submit</button>
+          <button className="edit-btn">Submit</button>
         </form>
       </div>
     );

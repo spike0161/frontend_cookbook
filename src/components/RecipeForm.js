@@ -110,13 +110,9 @@ class RecipeForm extends React.Component {
             />
             <label>Picture: </label>
             <input
-              className="form-control form-control-sm"
-              type="text"
-              name="picture"
+              type="file"
               onChange={this.recipeHandler}
-              placeholder="add image"
-              style={{ width: 200 }}
-            />
+            /><br/>
             <label>Instructions: </label>
 
             <textarea
