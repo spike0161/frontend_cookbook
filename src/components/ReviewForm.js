@@ -58,14 +58,14 @@ class ReviewForm extends Component {
             <label>Review: </label>
 
             <textarea
-              className="form-control"
+              className="form-control review-textarea"
               name="instructions"
               onChange={this.reviewHandler}
               id="exampleFormControlTextarea1"
               rows="3"
               style={{ width: 200 }}
             ></textarea>
-            <button>Submit Review</button>
+          <button className="submit-review-btn btn btn-primary btn-lg btn-block" id="submit-review">Submit Review</button>
           </div>
         </form>
       </div>
