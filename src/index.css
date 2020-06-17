@@ -207,3 +207,24 @@ border: none;
 .edit-profile h4 {
   margin: 20px;
 }
+
+.dropdown-rating {
+  width: 30px;
+  color: #CCC;
+  margin-top: 15px;
+  margin-right: 10px;
+  background-color: #87240b;
+  border: none;
+}
+
+#review-header {
+  font-size: 30px;
+}
+
+#delete-review-btn {
+  width: 10%;
+  color: #CCC;
+  margin-top: 15px;
+  background-color: #87240b;
+  border: none;
+}
