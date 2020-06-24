@@ -103,7 +103,7 @@ color: #CCC;
   border-radius: 50%;
 }
 
-#review-div {
+ #review-div {
   border: 2px solid #87240b;
   width: 40%;
   float: center;
@@ -111,6 +111,7 @@ color: #CCC;
   margin-left: 25%;
   margin-top: 20px;
   margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
 .about {
@@ -178,7 +179,7 @@ footer {
 }
 
 .form-group {
-  text-align: center;
+  color: #CCC;
 }
 
 .edit-profile {
@@ -207,12 +208,10 @@ border: none;
 .edit-profile h4 {
   margin: 20px;
 }
-
-.dropdown-rating {
+ .dropdown-rating {
   width: 30px;
   color: #CCC;
   margin-top: 15px;
-  margin-right: 10px;
   background-color: #87240b;
   border: none;
 }

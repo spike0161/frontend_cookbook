@@ -47,7 +47,10 @@ class ReviewForm extends Component {
       <div>
         <form onSubmit={this.addCreatedReview}>
           <div className="form-group">
+
             <label id="review-header">Review: </label><br/>
+
+            <label>Leave a rating:</label>
             <select className="dropdown-rating" value={this.state.name} onChange={this.ratingHandler}>
               <option value="1">1</option>
               <option value="2">2</option>

@@ -52,7 +52,6 @@ class App extends React.Component {
   }
 
   render() {
-    // if you have a user redirect to user profile
     return (
       <div>
         <BrowserRouter>

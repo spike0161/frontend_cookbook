@@ -1,15 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter, Link, Redirect } from "react-router-dom";
-import { removeFavRecipe } from '../redux/actionCreators'
+import { removeFavRecipe, login } from '../redux/actionCreators'
 
-// if(this.props.user){
+
+// if(this.this.props.user){
 //   return <Redirect to="/usersprofile" />
 // }
 
-const UserProfilePage = props => {
-console.log("User profile", props.user.user)
-  return !props.user.user ? <Redirect to="/login" /> : (
+class UserProfilePage extends React.Component {
+render(){
+debugger
+  return !localStorage ? <Redirect to='/usersprofile'/> : (
     <div className="user-profile-div">
       <div className="profile-div">
         <img
@@ -20,15 +22,15 @@ console.log("User profile", props.user.user)
       <div>
       <Link to='/usersprofile/edit'>Edit Profile</Link>
       </div>
-      <h3>{props.user.user.username}</h3>
+      <h3>{this.props.user.user.username}</h3>
         <div>
-          <p>Bio: {props.user.user.bio}</p>
+          <p>Bio: {this.props.user.user.bio}</p>
         </div>
       </div>
       My Favorite Recipes:{" "}
       <div className="container-fluid">
         <div className="row">
-          {props.user.favorites.map(recipe => (
+          {this.props.user.favorites.map(recipe => (
             <div className="col-lg-2" key={recipe.id}>
               <div className="card">
                 <img className="card-img-top" src={recipe.picture} alt="Card" />
@@ -46,7 +48,7 @@ console.log("User profile", props.user.user)
                     <button
                       type="button delete-fav"
                       className="btn btn-secondary delete"
-                      onClick={e => props.deleteFavHandler(recipe, props.user)}
+                      onClick={e => this.props.deleteFavHandler(recipe, this.props.user)}
                     >
                       x
                     </button>
@@ -59,16 +61,18 @@ console.log("User profile", props.user.user)
       </div>
     </div>
   );
-};
+}}
 // debug user
 const mapStateToProps = store => ({
   user: store.user,
-  recipe: store.recipes
+  recipe: store.recipes,
+  redirect: store.redirect
 })
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteFavHandler: (recipe, user) => dispatch(removeFavRecipe(recipe, user))
+    deleteFavHandler: (recipe, user) => dispatch(removeFavRecipe(recipe, user)),
+    loginUser: (user) => dispatch(login(user))
   }
 };
 
