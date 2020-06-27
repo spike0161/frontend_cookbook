@@ -79,7 +79,7 @@ class RecipeForm extends React.Component {
           <div className="form-group">
             <label>Recipe Title: </label>
             <input
-              className="form-control form-control-sm"
+              className="form-control form-control-sm review-textarea"
               type="text"
               name="title"
               onChange={this.recipeHandler}
@@ -88,20 +88,21 @@ class RecipeForm extends React.Component {
             />
 
             <select
+              className="review-textarea"
               onChange={e => this.ingredientsHandler(e, this.props.ingredients)}
             >
-              <option defaultValue="value">Select Ingredient</option>
+              <option defaultValue="value" >Select Ingredient</option>
 
               {this.props.ingredients.map(ing => (
                 <option key={ing.id} value={ing.name}>
                   {ing.name}
                 </option>
               ))}
-            </select>
+            </select><br/>
 
             <label>Cooktime: </label>
             <input
-              className="form-control form-control-sm"
+              className="form-control form-control-sm review-textarea"
               type="text"
               name="cookTime"
               onChange={this.recipeHandler}
