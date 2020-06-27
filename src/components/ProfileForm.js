@@ -8,21 +8,18 @@ class ProfileForm extends Component {
     super(props);
 
     this.state = {
-      picture: null,
-      bio: ""
+      profilePic: {}
     };
   }
 
   addPicHandler = e => {
-    this.setState({ picture: e.target.files[0] });
-  };
-
-  addBioHandler = e => {
-    this.setState({ bio: e.target.value });
+    this.setState({ profilePic: e.target.files[0] });
   };
 
   userDataSubmit = e => {
     e.preventDefault();
+    const form = new FormData();
+    form.append("profilePic", this.state.profilePic)
     this.props.onSubmit(this.state, this.props.user.user);
     this.props.history.push("/usersprofile");
   };
@@ -36,12 +33,6 @@ class ProfileForm extends Component {
           </div>
           <div>
               <input type="file" onChange={this.addPicHandler} />
-            <h4>Add Bio:</h4>
-            <textarea
-              id='profile-bio'
-              placeholder="add bio here..."
-              onChange={this.addBioHandler}
-            ></textarea>
           </div>
           <button className="edit-btn">Submit</button>
         </form>
@@ -56,7 +47,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSubmit: (userData, user) => dispatch(addUserData(userData, user))
+    onSubmit: (profilePic, user) => dispatch(addUserData(profilePic, user)),
   };
 };
 

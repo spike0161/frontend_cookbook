@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {signUp} from '../redux/actionCreators'
 
 class SignUp extends React.Component {
+  // add bio to signup form
   state = {
     firstname: "",
     lastname: "",

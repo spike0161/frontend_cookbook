@@ -86,10 +86,15 @@ const currentUserReducer = (oldState = null, action) => {
         )
       };
       case "UPDATE_USER":
-      return action.payload
-    default:
+      debugger
+      return  {
+        ...oldState,
+        user: {...oldState.user,
+           picture: {...oldState.user.picture, picture: action.payload }}
+      }
+     default:
       return oldState;
-  }
+    }
 };
 
 const rootReducer = combineReducers({
