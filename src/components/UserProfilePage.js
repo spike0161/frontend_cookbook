@@ -10,8 +10,7 @@ import { removeFavRecipe, login } from '../redux/actionCreators'
 
 class UserProfilePage extends React.Component {
 render(){
-debugger
-  return !localStorage ? <Redirect to='/usersprofile'/> : (
+  return (
     <div className="user-profile-div">
       <div className="profile-div">
         <img
@@ -23,9 +22,6 @@ debugger
       <Link to='/usersprofile/edit'>Edit Profile</Link>
       </div>
       <h3>{this.props.user.user.username}</h3>
-        <div>
-          <p>Bio: {this.props.user.user.bio}</p>
-        </div>
       </div>
       My Favorite Recipes:{" "}
       <div className="container-fluid">

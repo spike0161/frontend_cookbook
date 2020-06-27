@@ -116,7 +116,7 @@ class RecipeForm extends React.Component {
             <label>Instructions: </label>
 
             <textarea
-              className="form-control"
+              className="form-control review-textarea"
               name="instructions"
               onChange={this.recipeHandler}
               id="exampleFormControlTextarea1"

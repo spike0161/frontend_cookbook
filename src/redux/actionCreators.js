@@ -46,32 +46,27 @@ function deletingReview(review) {
   return { type: "DELETE_REVIEW", payload: review };
 }
 
-function updateUser(user) {
-    return { type: "UPDATE_USER", payload: user}
+function updateUser(picture) {
+    return { type: "UPDATE_USER", payload: picture}
 }
 
 // ############################### Dispatch Functions #################################################
 
-function addUserData(userData, user) {
+function addUserData(profilePic, user){
   // debugger
-  return dispatch => {
-    fetch(`http://localhost:3000/users/${user.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        bio: userData.bio,
-        picture: userData.picture
-      }),
-    }).then(res => res.json())
-      .then(user => {
-        console.log(user)
-        dispatch(updateUser(user))
-      });
-  };
-}
+    return dispatch=>{
+      fetch(`http://localhost:3000/users/${user.id}/edit` , {
+        method: 'PATCH',
+        body: profilePic
+        })
+        // .then(res => res.json())
+      // .then(res => {
+      //      console.log("Updated user", res)
+        return dispatch(updateUser(profilePic))
+       }
+    }
+
+
 
 function logOutUser() {
   return dispatch => {
@@ -266,5 +261,5 @@ export {
   deletingReview,
   logOutUser,
   addUserData,
-  updateUser
+  updateUser,
 };
