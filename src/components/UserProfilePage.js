@@ -9,8 +9,7 @@ import { removeFavRecipe, login } from '../redux/actionCreators'
 // }
 
 class UserProfilePage extends React.Component {
-render(){
-debugger
+render()
   return !localStorage ? <Redirect to='/usersprofile'/> : (
     <div className="user-profile-div">
       <div className="profile-div">
