@@ -87,11 +87,7 @@ const currentUserReducer = (oldState = null, action) => {
       };
       case "UPDATE_USER":
       debugger
-      return  {
-        ...oldState,
-        user: {...oldState.user,
-           picture: {...oldState.user.picture, picture: action.payload }}
-      }
+      return action.payload
      default:
       return oldState;
     }
