@@ -52,21 +52,23 @@ function updateUser(picture) {
 
 // ############################### Dispatch Functions #################################################
 
-function addUserData(profilePic, user){
-  // debugger
-    return dispatch=>{
-      fetch(`http://localhost:3000/users/${user.id}/edit` , {
-        method: 'PATCH',
-        body: profilePic
-        })
-        // .then(res => res.json())
-      // .then(res => {
-      //      console.log("Updated user", res)
-        return dispatch(updateUser(profilePic))
-       }
-    }
-
-
+function addUserData(userData, user) {
+  return dispatch => {
+    fetch(`http://localhost:3000/users/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        bio: userData.bio
+      }),
+    }).then(res => res.json())
+      .then(user => {
+        dispatch(updateUser(user))
+      });
+  };
+}
 
 function logOutUser() {
   return dispatch => {

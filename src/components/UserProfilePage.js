@@ -8,8 +8,7 @@ import { removeFavRecipe, login } from '../redux/actionCreators'
 //   return <Redirect to="/usersprofile" />
 // }
 
-class UserProfilePage extends React.Component {
-render(){
+const UserProfilePage = props => {
   return (
     <div className="user-profile-div">
       <div className="profile-div">
@@ -21,12 +20,15 @@ render(){
       <div>
       <Link to='/usersprofile/edit'>Edit Profile</Link>
       </div>
-      <h3>{this.props.user.user.username}</h3>
+      <h3>{props.user.user.username}</h3>
+        <div>
+          <p>Bio: {props.user.user.bio}</p>
+        </div>
       </div>
       My Favorite Recipes:{" "}
       <div className="container-fluid">
         <div className="row">
-          {this.props.user.favorites.map(recipe => (
+          {props.user.favorites.map(recipe => (
             <div className="col-lg-2" key={recipe.id}>
               <div className="card">
                 <img className="card-img-top" src={recipe.picture} alt="Card" />
@@ -44,7 +46,7 @@ render(){
                     <button
                       type="button delete-fav"
                       className="btn btn-secondary delete"
-                      onClick={e => this.props.deleteFavHandler(recipe, this.props.user)}
+                      onClick={e => props.deleteFavHandler(recipe, props.user)}
                     >
                       x
                     </button>
@@ -57,8 +59,8 @@ render(){
       </div>
     </div>
   );
-}}
-// debug user
+}
+
 const mapStateToProps = store => ({
   user: store.user,
   recipe: store.recipes,
@@ -67,8 +69,7 @@ const mapStateToProps = store => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteFavHandler: (recipe, user) => dispatch(removeFavRecipe(recipe, user)),
-    loginUser: (user) => dispatch(login(user))
+    deleteFavHandler: (recipe, user) => dispatch(removeFavRecipe(recipe, user))
   }
 };
 

@@ -43,21 +43,16 @@ class App extends React.Component {
         .then(res => res.json())
         .then(user => {
           this.props.loginUser(user)
-          // && this.setState({ loading: false });
         });
     }
-    // else {
-      // this.setState({ loading: false });
-    // }
   }
 
   render() {
     return (
       <div>
         <BrowserRouter>
-          <Navbar/>
             {this.props.user ?
-            <Redirect to='/usersprofile'/>
+            <Redirect to='/usersprofile'/> && <Navbar/>
           :
           <Route exact path='/' component={SignUp}/>}
           <Switch>
