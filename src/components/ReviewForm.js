@@ -3,30 +3,16 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { addCreatedReview } from "../redux/actionCreators"
 
-// <label>Review Title: </label>
-// <input
-//   className="form-control form-control-sm"
-//   type="text"
-//   name="title"
-//   onChange={this.reviewTitleHandler}
-//   placeholder="Recipe Title"
-//   style={{ width: 200 }}
-// />
 
 class ReviewForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      // title: "",
       reviewText: "",
       rating: 1
     };
   }
-
-  // reviewTitleHandler = e => {
-  //   this.setState({ title: e.target.value });
-  // };
 
   ratingHandler = e => {
     this.setState({ rating: e.target.value });

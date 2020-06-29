@@ -11,7 +11,7 @@ class RecipeDetails extends React.Component {
         <h3>{this.props.recipe.title}</h3>
         {!this.props.recipe.ingredients ? null :
         this.props.recipe.ingredients.map(ing => (
-          <p>
+          <p key={ing.id}>
             {ing.name} {ing.amount} {ing.unit}
           </p>
         ))
@@ -35,7 +35,7 @@ class RecipeDetails extends React.Component {
         <ReviewForm />
         {this.props.recipe.reviews
           ? this.props.recipe.reviews.map(rev => (
-              <div id="review-div">
+              <div id="review-div" key={rev.id}>
                 Rating : {rev.rating} / 5
                 <h4>{rev.review}</h4>
                 {rev.user_id !== this.props.user.user.id ? null : (

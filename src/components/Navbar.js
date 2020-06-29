@@ -1,5 +1,5 @@
 import React from 'react'
-import {withRouter, Link, Redirect } from 'react-router-dom'
+import {withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logOutUser } from '../redux/actionCreators'
 
@@ -13,7 +13,7 @@ const NavBar =(props)=>{
               <li><Link to='/usersprofile'>Profile</Link></li>
               <li><Link to='/about'>About</Link></li>
               {props.user ? <li><Link to='/login' onClick={props.logOutUser}>Log out</Link></li> : null }
-              
+
              </ul>
         </div>
     )

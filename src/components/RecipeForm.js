@@ -3,12 +3,6 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { addingRecipe } from "../redux/actionCreators";
 
-// {this.state.ingredients.map(ing => (
-//   <li>
-//     {ing} <span onClick={() => this.removeIngredient(ing)}>X</span>
-//   </li>
-// ))}
-
 
 class RecipeForm extends React.Component {
   state = {
@@ -28,10 +22,6 @@ class RecipeForm extends React.Component {
     copyState[e.target.name] = e.target.value;
     this.setState(copyState);
   };
-
-  // allIngredientObjects = () => {
-  //   debugger;
-  // };
 
   ingredientsHandler = (e, ing) => {
     let selectedIng = ing.filter(ing => ing.name === e.target.value).pop()
@@ -72,7 +62,7 @@ class RecipeForm extends React.Component {
           <div className="added-ingredient-div">
             <h4>Added Ingredients:</h4>
               {this.state.ingredients.map(ing => (
-                <p>{ing.name}</p>
+                <p key={ing.id}>{ing.name}</p>
               ))}
           </div>
 

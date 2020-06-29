@@ -1,12 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { withRouter, Link, Redirect } from "react-router-dom";
-import { removeFavRecipe, login } from '../redux/actionCreators'
-
-
-// if(this.this.props.user){
-//   return <Redirect to="/usersprofile" />
-// }
+import { withRouter, Link, } from "react-router-dom";
+import { removeFavRecipe } from '../redux/actionCreators'
 
 const UserProfilePage = props => {
   return (
