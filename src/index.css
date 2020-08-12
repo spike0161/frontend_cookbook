@@ -227,3 +227,12 @@ border: none;
   background-color: #87240b;
   border: none;
 }
+
+.fa-linkedin {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.fa-github {
+  padding-left: 10px;
+  padding-right: 10px;
+}
