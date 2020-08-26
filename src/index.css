@@ -4,6 +4,14 @@ body {
   background-attachment: fixed;
 }
 
+#heading-title {
+  font-family: 'Kaushan Script', cursive;
+  margin-bottom: 30px;
+  font-size: 3rem;
+  color: #872519;
+  text-align: center;
+}
+
 .login-form {
   margin-top: 15%;
 }

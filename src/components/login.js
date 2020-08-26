@@ -36,6 +36,7 @@ class Login extends React.Component {
                   className="container form-group"
                   onSubmit={this.handleLoginSubmit}
                 >
+                <h1 id="heading-title">Welcome to CookBook</h1>
                   <label htmlFor="name">Username:</label>
                   <input
                     type="text"
